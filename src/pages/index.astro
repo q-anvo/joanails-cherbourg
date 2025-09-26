@@ -14,7 +14,6 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Gallery from '~/components/widgets/Gallery.astro';
 import GoogleReview from '~/components/widgets/GoogleReview.astro';
-import Hero from '~/components/widgets/Hero.astro';
 
 const metadata = {
   title: 'Joanails - Salon de manucure',
@@ -160,15 +159,15 @@ const metadata = {
     title="Mon salon"
     items={[
       {
-        title: 'A proximité de tout !',
+        title: 'À proximité de tout !',
         description: "Profitez d'un moment de détente dans un cocon proche du centre ville de Cherbourg.",
       },
       {
-        title: 'Equipée et moderne !',
+        title: 'Equipé et moderne !',
         description: 'Je dispose de tous les équipements pour sublimer vos mains et vos pieds',
       },
       {
-        title: 'Pour tous les gouts !',
+        title: 'Pour tous les goûts !',
         description:
           "De la couleur plus classique en passant par les strass et paillettes jusqu'au design de votre choix",
       },
@@ -200,7 +199,7 @@ const metadata = {
     ]}
     image={{ src: '~/assets/images/salon2.jpg', alt: 'Salon Joanails 2' }}
   >
-    <Fragment slot="content">La beauté sur mesure dans un espace dédiée à la détente et au bien-être</Fragment>
+    <Fragment slot="content">La beauté sur mesure dans un espace dédié à la détente et au bien-être</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
@@ -212,10 +211,11 @@ const metadata = {
       <Gallery
         images={[
           { src: '/images/nail1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
-          { src: '/images/nail2.png', alt: 'Remplissage gel', width: 1080, height: 1350 },
+          { src: '/images/nail2.jpg', alt: 'Pose Cat eyes', width: 1080, height: 1350 },
           { src: '/images/nail3.png', alt: 'Pose complète avec rallongement', width: 1080, height: 1350 },
           { src: '/images/nail4.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
           { src: '/images/nail5.png', alt: 'Pose Nail art', width: 1080, height: 1350 },
+          { src: '/images/nail6.jpg', alt: 'Pose Nail art', width: 1080, height: 1350 },
         ]}
       />
     </Fragment>
