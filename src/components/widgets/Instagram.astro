@@ -1,0 +1,111 @@
+<section
+  id="instagram"
+  class="instagram-section h-auto relative flex flex-col justify-center items-center text-center px-6 py-6"
+>
+  <div class="instagram-frame-wrapper w-full max-w-4xl mx-auto rounded-2xl overflow-visible">
+    <iframe
+      id="instagram-iframe"
+      src="https://app.mirror-app.com/feed-instagram/24021e12-d352-47fd-b41e-be1ecd028244/preview"
+      style="width:100%;border:none;display:block;min-height:360px;height:558px;"
+      scrolling="no"
+      loading="lazy"
+      title="Instagram - JoaNails"
+    ></iframe>
+  </div>
+</section>
+
+<script>
+(function () {
+  const iframe = document.getElementById('instagram-iframe');
+  const wrapper = document.querySelector('.instagram-frame-wrapper');
+
+  function getFallbackHeight() {
+    if (window.matchMedia("(min-width: 1024px)").matches) { // lg
+      return 550;
+    } else if (window.matchMedia("(min-width: 608px)").matches) { // md
+      return 450;
+    } else if (window.matchMedia("(min-width: 320px)").matches) { // sm
+      return 850;
+    } else {
+        return 900;
+    }
+  }
+
+  let FALLBACK_HEIGHT = getFallbackHeight();
+
+  function setIframeHeight(h) {
+    if (!iframe) return;
+    const height = Math.max(parseInt(h || 0, 10) || FALLBACK_HEIGHT, 200);
+    iframe.style.height = height + 'px';
+    iframe.style.minHeight = Math.min(height, FALLBACK_HEIGHT) + 'px';
+    if (wrapper) wrapper.style.marginBottom = '1rem';
+  }
+
+  iframe.addEventListener('load', function () {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      const body = doc.body;
+      const html = doc.documentElement;
+      const contentHeight = Math.max(
+        body ? body.scrollHeight : 0,
+        html ? html.scrollHeight : 0
+      );
+      if (contentHeight && contentHeight > 100) {
+        setIframeHeight(contentHeight);
+        return;
+      }
+    } catch (err) {
+    }
+
+    setIframeHeight(FALLBACK_HEIGHT);
+  });
+
+  window.addEventListener('message', function (event) {
+    const allowedOrigin = 'https://app.mirror-app.com';
+    if (!event.origin || !event.data) return;
+    try {
+      const payload = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      if (event.origin === allowedOrigin || typeof payload === 'object') {
+        if (payload.height) {
+          setIframeHeight(payload.height);
+        } else if (payload.type === 'resize' && payload.height) {
+          setIframeHeight(payload.height);
+        }
+      }
+    } catch (e) {}
+  }, false);
+
+  setTimeout(() => {
+    const currentH = parseInt(iframe.style.height, 10) || 0;
+    if (currentH < 250) {
+      setIframeHeight(FALLBACK_HEIGHT);
+    }
+  }, 2000);
+
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(() => {
+      FALLBACK_HEIGHT = getFallbackHeight(); // met à jour si taille change
+      setIframeHeight(FALLBACK_HEIGHT);
+    });
+    ro.observe(iframe);
+  }
+
+  // Mettre à jour FALLBACK_HEIGHT si fenêtre redimensionnée
+  window.addEventListener("resize", () => {
+    FALLBACK_HEIGHT = getFallbackHeight();
+  });
+})();
+</script>
+
+<style>
+.instagram-section {
+  overflow: visible;
+}
+.instagram-frame-wrapper iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+</style>

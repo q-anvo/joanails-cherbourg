@@ -1,0 +1,95 @@
+---
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+import type { Features as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  image,
+  items = [],
+  columns = 3,
+  defaultIcon,
+  isBeforeContent,
+  isAfterContent,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''}`}
+  bg={bg}
+>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+
+  { /* zone image optionnelle (garde votre comportement existant) */ }
+  <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
+    {
+      image && (
+        <div class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Image
+              class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
+              width="auto"
+              height={320}
+              widths={[400, 768]}
+              layout="fullWidth"
+              {...image}
+            />
+          )}
+        </div>
+      )
+    }
+  </div>
+
+  { /* ---------- grille vidéos ---------- */ }
+  <div class={`mt-12 grid gap-4
+                grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-${columns}
+                `}>
+    {
+      items.map((item) => {
+        const src = item?.src ?? '';
+        const poster = item?.poster ?? '';
+        const alt = item?.alt ?? '';
+        const title = item?.title ?? '';
+        return (
+          <div class="w-full overflow-hidden rounded-lg bg-primary shadow-lg">
+            <div class="relative w-full h-56 md:h-72 lg:h-64">
+              <video
+                aria-label={alt}
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster={poster}
+                class="w-full h-full object-cover"
+              >
+                <source src={src} type={item?.type ?? 'video/mp4'} />
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+            </div>
+
+            { title && (
+              <div class="p-3">
+                <h3 class="text-lg font-semibold">{title}</h3>
+              </div>
+            ) }
+          </div>
+        );
+      })
+    }
+  </div>
+</WidgetWrapper>

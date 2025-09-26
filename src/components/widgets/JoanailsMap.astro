@@ -1,0 +1,36 @@
+---
+const {
+  address = "73 Rue du Val de Saire, 50100 Cherbourg, France",
+  zoom = 15,
+  height = "420px",
+} = Astro.props;
+
+const query = encodeURIComponent(address);
+const src = `https://www.google.com/maps?q=${query}&z=${zoom}&output=embed`;
+---
+<figure class="max-w-4xl mx-auto my-6 py-6">
+  <figcaption class="mb-3 text-sm text-slate-600 dark:text-slate-300">
+    <strong>JoaNails Cherbourg</strong> <span class="opacity-60">•</span> {address} <span class="opacity-60">•</span> <a
+      class="underline hover:text-sky-600 transition"
+      href={`https://www.google.com/maps/search/?api=1&query=${query}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ouvrir dans Google Maps
+    </a>
+  </span>
+  </figcaption>
+
+  <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
+    <iframe
+      class="w-full"
+      style={`height: ${height};`}
+      src={src}
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+      title={`Carte - ${address}`}
+      frameborder="0"
+    ></iframe>
+  </div>
+</figure>

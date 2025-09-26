@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Belleza';
+  src: url('/src/assets/fonts/Belleza.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Calgary';
+  src: url('/src/assets/fonts/Calgary.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

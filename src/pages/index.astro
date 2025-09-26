@@ -1,0 +1,317 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero3 from '~/components/widgets/Hero3.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features4 from '~/components/widgets/Features4.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import JoanailsMap from '~/components/widgets/JoanailsMap.astro';
+import Instagram from '~/components/widgets/Instagram.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Gallery from '~/components/widgets/Gallery.astro';
+import GoogleReview from '~/components/widgets/GoogleReview.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const metadata = {
+  title: 'Joanails - Salon de manucure',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <section
+    id="home"
+    class="h-screen relative flex flex-col justify-center items-center text-center px-6 overflow-hidden"
+  >
+    <!-- Video background -->
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+      <source src="/videos/banner.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+
+    <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-10"></div>
+
+    <div class="relative z-20 flex flex-col justify-center items-center">
+      <Hero3
+        actions={[
+          {
+            variant: 'primary',
+            text: 'Découvrir mes prestations',
+            href: '#prestations',
+            icon: 'tabler:hand-finger-down',
+          },
+          {
+            variant: 'primary',
+            text: 'Prendre RDV',
+            href: '#reservations',
+            icon: 'tabler:calendar-week-filled',
+          },
+        ]}
+        image={{ src: '~/assets/images/logo.png', alt: 'Logo Joanails' }}
+      />
+    </div>
+  </section>
+
+  <!-- Note Widget ******************* -->
+
+  <Note
+    title="Joanails:"
+    description="Profitez d’un moment de détente dans un cocon proche du centre ville de Cherbourg. "
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Features2
+    id="prestations"
+    title="Mes prestations"
+    subtitle="Découvrez les services et prestations que je propose"
+    items={[
+      {
+        title: 'Semi permanent mains/pieds',
+        description: ' Vernis sur ongles naturels <br/> <span class=font-bold>À partir de 40 €</span>',
+        icon: 'tabler:hand-stop',
+      },
+      {
+        title: 'Gel',
+        description: 'Sur ongles naturels ou avec unrallongement <br/> <span class=font-bold>À partir de 50 €</span>',
+        icon: 'tabler:droplet-heart',
+      },
+      {
+        title: 'Nail art complète avec rallongement',
+        description: 'French, babyboomer, strass, paillettes, stickers, etc. <br/> <span class=font-bold>À partir de 60 €</span>',
+        icon: 'tabler:brush',
+      },
+      {
+        title: 'Soin mains/pieds :',
+        description:
+          'Sublimez vos mains/pieds avec le limage, le travail des cuticules, un vernis protecteur et une huile sublimatrice',
+        icon: 'streamline-ultimate:body-care-cream',
+      },
+      {
+        title: 'Carte Cadeau :',
+        description: 'Faites plaisir en offrant la pose de votre choix. \n Contactez moi par téléphone au <a class="underline font-bold" href=tel:+0749394404> 07.49.39.44.04</a>',
+        icon: 'fluent-mdl2:gift-card',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <Features4
+    id="prestations2"
+    tagline="services"
+    isAfterContent
+    columns={3}
+    items={[
+      { src: '/videos/pose_gel.mp4', poster: '/images/logo.png', alt: 'Pose de gel', title: 'Pose de gel' },
+      { src: '/videos/pose_nail_art.mp4', poster: '/images/logo.png', alt: 'Nail art', title: 'Nail art' },
+      {
+        src: '/videos/nettoyage_cuticules.mp4',
+        poster: '/images/nail3.png',
+        alt: 'Soin des ongles et cuticules',
+        title: 'Soin des ongles et cuticules',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Features4>
+  <Steps
+    id="reservations"
+    tagline="📅 Réservez votre moment beauté"
+    title="Plusieurs options s’offrent à vous pour prendre rendez-vous :"
+    items={[
+      {
+        title: 'Par téléphone au <a href="tel:+33749394404" class="underline">07.49.39.44.04</a>',
+        description: 'Nous conviendrons ensemble d\'un créneau pour votre rendez-vous.',
+        icon: 'tabler:phone',
+      },
+      {
+        title:
+          'Via <a href="https://instagram.com/joanails.cherbourg" target="_blank" class="underline">Instagram</a >',
+        description: 'Envoyez moi un message privé sur le compte joanails.',
+        icon: 'tabler:brand-instagram',
+      },
+      {
+        title:
+          'Réservez en ligne sur <a href="https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v" target="_blank" class="underline">Fresha</a >',
+        description:
+          'Sur Fresha, sélectionnez le service souhaité, choisissez votre créneau, et confirmez votre réservation en quelques clics.',
+        icon: 'hugeicons:appointment-02',
+      },
+    ]}
+    image={{ src: '~/assets/images/contact.png', alt: 'Salon Joanails 2' }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="salon"
+    isReversed
+    tagline="Mon salon"
+    title="Mon salon"
+    items={[
+      {
+        title: 'A proximité de tout !',
+        description: "Profitez d'un moment de détente dans un cocon proche du centre ville de Cherbourg.",
+      },
+      {
+        title: 'Equipée et moderne !',
+        description: 'Je dispose de tous les équipements pour sublimer vos mains et vos pieds',
+      },
+      {
+        title: 'Pour tous les gouts !',
+        description:
+          "De la couleur plus classique en passant par les strass et paillettes jusqu'au design de votre choix",
+      },
+    ]}
+    image={{ src: '~/assets/images/salon1.jpg', alt: 'Salon Joanails' }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        C'est avec grand plaisir que je prendrais soin de vos mains
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Niveau de confort optimal !',
+        description: `Profitez d’un espace cocooning pour chouchouter vos pieds`,
+      },
+      {
+        title: 'Ambiance élégante et florale !',
+        description: 'Savourez un moment unique dans un décor chaleureux aux touches délicates et fleuries.',
+      },
+    ]}
+    image={{ src: '~/assets/images/salon2.jpg', alt: 'Salon Joanails 2' }}
+  >
+    <Fragment slot="content">La beauté sur mesure dans un espace dédiée à la détente et au bien-être</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+  <!-- Features Widget *************** -->
+  <Content id="realisations" title="Réalisations">
+    <Fragment slot="content">
+      <Gallery
+        images={[
+          { src: '/images/nail1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
+          { src: '/images/nail2.png', alt: 'Remplissage gel', width: 1080, height: 1350 },
+          { src: '/images/nail3.png', alt: 'Pose complète avec rallongement', width: 1080, height: 1350 },
+          { src: '/images/nail4.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
+          { src: '/images/nail5.png', alt: 'Pose Nail art', width: 1080, height: 1350 },
+        ]}
+      />
+    </Fragment>
+
+    <Fragment slot="image">
+      <div class="relative m-auto max-w-4xl">
+        <img src="/images/logo.png" alt="logo joanails" />
+      </div>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'précision ', amount: '100%' },
+      { title: 'couleur', amount: '100%' },
+      { title: 'originalité', amount: '100%' },
+      { title: 'love', amount: '1000%' },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Stats>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    id=faqs
+    title="Questions fréquemment posées"
+    subtitle="Je réponds ici aux questions que vous vous posez."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Combien de temps dure une pose d’ongle ?',
+        description:
+          'Une pose dure généralement entre 3 à 4 semaines selon votre mode de vie et la croissance de vos ongles naturels. Pour maintenir un résultat optimal, nous recommandons un remplissage toutes les 3 semaines.',
+      },
+      {
+        title: 'Quelle est la différence entre gel et semi-permanent ?',
+        description:
+          'Le gel est plus résistant et dure plus longtemps (3-4 semaines) tandis que le semi-permanent est plus fin et dure 2-3 semaines. Le gel permet également de créer des extensions et du nail art plus complexe.',
+      },
+      {
+        title: 'Comment enlever mes ongles en gel ?',
+        description:
+          'Il est fortement recommandé de venir au salon pour la dépose. Nous utilisons des techniques professionnelles qui préservent vos ongles naturels. Ne jamais arracher ou ronger les ongles en gel.',
+      },
+      {
+        title: "Mes ongles naturels vont-ils s'abîmer ?",
+        description:
+          'Non, si la pose et la dépose sont réalisées correctement par un professionnel. Nous prenons soin de vos ongles naturels et utilisons des produits de qualité pour préserver leur santé.',
+      },
+    ]}
+  />
+
+  <Instagram />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+
+  <section>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="lg:col-span-1">
+      <CallToAction
+        actions={[
+          {
+            variant: 'primary',
+            text: 'Réservez votre créneau sur Fresha',
+            href: 'https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v/booking?cartId=d84cea1e-97ca-4090-a5f6-91961959da32',
+            target: '_blank',
+            icon: 'tabler:check',
+          },
+        ]}
+      >
+        <Fragment slot="title">
+          Le salon n'attend plus que <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">vous</span> !
+        </Fragment>
+
+        <Fragment slot="subtitle">Vérifiez les avis des clients</Fragment>
+        <Fragment slot="subtitle"><GoogleReview/></Fragment>
+        <Fragment slot="subtitle">Et faites vous plaisir !</Fragment>
+      </CallToAction>
+    </div>
+
+    <div class="lg:col-span-2">
+      <JoanailsMap />
+    </div>
+  </div>
+</section>
+
+
+</Layout>
