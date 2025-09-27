@@ -28,7 +28,13 @@ const metadata = {
     class="h-screen relative flex flex-col justify-center items-center text-center px-6 overflow-hidden"
   >
     <!-- Video background -->
-    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="absolute top-0 left-0 w-full h-full object-cover object-center md:object-[50%_40%] z-0"
+    >
       <source src="/videos/banner.mp4" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo.
     </video>
@@ -51,7 +57,7 @@ const metadata = {
             icon: 'tabler:calendar-week-filled',
           },
         ]}
-        image={{ src: '~/assets/images/logo.png', alt: 'Logo Joanails' }}
+        image={{ src: '~/assets/images/logo.png', alt: 'Logo Joanails', class: "invert sepia saturate-200 hue-rotate-280" }}
       />
     </div>
   </section>
@@ -82,7 +88,7 @@ const metadata = {
       },
       {
         title: 'Nail art',
-        description: 'French, babyboomer, strass, paillettes, stickers, etc. <br/> <span class=font-bold>À partir de 60 €</span>',
+        description: 'French, babyboomer, strass, paillettes, stickers, etc. <br/> <span class=font-bold>À partir de 0.50 €</span>',
         icon: 'tabler:brush',
       },
       {
@@ -222,7 +228,7 @@ const metadata = {
 
     <Fragment slot="image">
       <div class="relative m-auto max-w-4xl">
-        <img src="/images/logo.png" alt="logo joanails" />
+        <img src="/images/logo.png" class="invert sepia saturate-200 hue-rotate-280"  alt="logo joanails" />
       </div>
     </Fragment>
 
