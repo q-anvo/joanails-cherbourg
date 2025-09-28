@@ -8,9 +8,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Joanails
-    template: '%s — Joanails'
-  description: "Salon de manucure à cherbourg"
+    default: Joa Nails
+    template: '%s — Joa Nails'
+  description: "Salon de manucure à cherbourg - Prothésiste ongulaire proche centre ville Cherbourg. Pose d'ongle en gel, semi permanent, nail art, strass, paillettes. Faites de vos mains une extension de vos envies"
   robots:
     index: true
     follow: true

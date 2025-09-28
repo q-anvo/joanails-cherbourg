@@ -284,14 +284,18 @@ const metadata = {
     ]}
   />
 
-  <Instagram />
+  <!-- <Instagram /> -->
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-secondary dark:bg-secondary"></div>
     </Fragment>
 
-  <section>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    <div class="lg:col-span-1">
+
+
+  <Content
+    id="joanails-map"
+    title="Le salon n'attend plus que vous !"
+  >
+    <Fragment slot="content">
       <CallToAction
         actions={[
           {
@@ -303,21 +307,19 @@ const metadata = {
           },
         ]}
       >
-        <Fragment slot="title">
-          Le salon n'attend plus que <span class="font-bold">vous</span> !
-        </Fragment>
-
         <Fragment slot="subtitle">Vérifiez les avis des clients</Fragment>
         <Fragment slot="subtitle"><GoogleReview/></Fragment>
         <Fragment slot="subtitle">Et faites vous plaisir !</Fragment>
       </CallToAction>
-    </div>
+    </Fragment>
 
-    <div class="lg:col-span-2">
+    <Fragment slot="image">
       <JoanailsMap />
-    </div>
-  </div>
-</section>
+    </Fragment>
 
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
 </Layout>
