@@ -77,6 +77,7 @@ const {
                 poster={poster}
                 class="w-full h-full object-cover"
               >
+                <meta itemprop="video" content={src} />
                 <source src={src} type={item?.type ?? 'video/mp4'} />
                 Votre navigateur ne supporte pas la vidéo.
               </video>

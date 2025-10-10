@@ -16,7 +16,11 @@ import Gallery from '~/components/widgets/Gallery.astro';
 import GoogleReview from '~/components/widgets/GoogleReview.astro';
 
 const metadata = {
-  title: 'Joanails - Salon de manucure',
+  title: 'Joanails - Salon de manucure à Cherbourg | Onglerie, Gel & Nail Art',
+  description:
+    'Joanails, salon de manucure à Cherbourg-en-Cotentin : pose de gel, vernis semi-permanent, nail art, soins des mains et pieds. Réservez votre moment beauté !',
+  image: '/images/logo.png',
+  canonical: 'https://joanails.fr/',
   ignoreTitleTemplate: true,
 };
 ---
@@ -28,13 +32,14 @@ const metadata = {
     class="h-screen relative flex flex-col justify-center items-center text-center px-6 overflow-hidden"
   >
     <!-- Video background -->
-    <video 
-      autoplay 
-      muted 
-      loop 
-      playsinline 
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
       class="absolute top-0 left-0 w-full h-full object-cover object-center md:object-[50%_40%] z-0"
     >
+      <meta itemprop="video" content="/videos/banner.mp4" />
       <source src="/videos/banner.mp4" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo.
     </video>
@@ -57,7 +62,11 @@ const metadata = {
             icon: 'tabler:calendar-week-filled',
           },
         ]}
-        image={{ src: '~/assets/images/logo.png', alt: 'Logo Joanails', class: "invert sepia saturate-200 hue-rotate-280" }}
+        image={{
+          src: '~/assets/images/logo.png',
+          alt: 'Logo Joanails',
+          class: 'invert sepia saturate-200 hue-rotate-280',
+        }}
       />
     </div>
   </section>
@@ -74,7 +83,7 @@ const metadata = {
   <Features2
     id="prestations"
     title="Mes prestations"
-    subtitle="Découvrez les services et prestations que je propose"
+    subtitle="Découvrez mes prestations de manucure à Cherbourg : pose de gel, vernis semi-permanent, nail art personnalisé, et soins des mains et des pieds. Joanails vous accueille dans un cadre cocooning au cœur de Cherbourg-en-Cotentin."
     items={[
       {
         title: 'Semi permanent mains/pieds',
@@ -88,7 +97,8 @@ const metadata = {
       },
       {
         title: 'Nail art',
-        description: 'French, babyboomer, strass, paillettes, stickers, etc. <br/> <span class=font-bold>À partir de 0.50 €</span>',
+        description:
+          'French, babyboomer, strass, paillettes, stickers, etc. <br/> <span class=font-bold>À partir de 0.50 €</span>',
         icon: 'tabler:brush',
       },
       {
@@ -99,7 +109,8 @@ const metadata = {
       },
       {
         title: 'Carte Cadeau :',
-        description: 'Faites plaisir en offrant la pose de votre choix. \n Contactez moi par téléphone au <a class="underline font-bold" href=tel:+0749394404> 07.49.39.44.04</a>',
+        description:
+          'Faites plaisir en offrant la pose de votre choix. \n Contactez moi par téléphone au <a class="underline font-bold" href=tel:+0749394404> 07.49.39.44.04</a>',
         icon: 'fluent-mdl2:gift-card',
       },
     ]}
@@ -119,7 +130,7 @@ const metadata = {
       { src: '/videos/pose_nail_art.mp4', poster: '/images/logo.png', alt: 'Nail art', title: 'Nail art' },
       {
         src: '/videos/nettoyage_cuticules.mp4',
-        poster: '/images/nail3.png',
+        poster: '/images/nail-art-cherbourg-3.png',
         alt: 'Soin des ongles et cuticules',
         title: 'Soin des ongles et cuticules',
       },
@@ -136,13 +147,14 @@ const metadata = {
     items={[
       {
         title: 'Par téléphone au <a href="tel:+33749394404" class="underline">07.49.39.44.04</a>',
-        description: 'Nous conviendrons ensemble d\'un créneau pour votre rendez-vous.',
+        description: "Nous conviendrons ensemble d'un créneau pour votre rendez-vous.",
         icon: 'tabler:phone',
       },
       {
         title:
           'Via <a href="https://instagram.com/joanails.cherbourg" target="_blank" class="underline">Instagram</a >',
-        description: 'Envoyez moi un message privé sur le compte <a href="https://instagram.com/joanails.cherbourg" target="_blank" class="underline">joanails.cherbourg</a >',
+        description:
+          'Envoyez moi un message privé sur le compte <a href="https://instagram.com/joanails.cherbourg" target="_blank" class="underline">joanails.cherbourg</a >',
         icon: 'tabler:brand-instagram',
       },
       {
@@ -161,7 +173,7 @@ const metadata = {
   <Content
     id="salon"
     isReversed
-    tagline="Mon salon"
+    tagline="Situé au cœur de Cherbourg-en-Cotentin, notre salon de manucure vous offre un espace moderne et relaxant pour sublimer vos ongles."
     title="Mon salon"
     items={[
       {
@@ -216,19 +228,19 @@ const metadata = {
     <Fragment slot="content">
       <Gallery
         images={[
-          { src: '/images/nail1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
-          { src: '/images/nail2.jpg', alt: 'Pose Cat eyes', width: 1080, height: 1350 },
-          { src: '/images/nail3.png', alt: 'Pose complète avec rallongement', width: 1080, height: 1350 },
-          { src: '/images/nail4.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
-          { src: '/images/nail5.png', alt: 'Pose Nail art', width: 1080, height: 1350 },
-          { src: '/images/nail6.jpg', alt: 'Pose Nail art', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-2.jpg', alt: 'Pose Cat eyes', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-3.png', alt: 'Pose complète avec rallongement', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-4.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-5.png', alt: 'Pose Nail art', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-6.jpg', alt: 'Pose Nail art', width: 1080, height: 1350 },
         ]}
       />
     </Fragment>
 
     <Fragment slot="image">
       <div class="relative m-auto max-w-4xl">
-        <img src="/images/logo.png" class="invert sepia saturate-200 hue-rotate-280"  alt="logo joanails" />
+        <img src="/images/logo.png" class="invert sepia saturate-200 hue-rotate-280" alt="logo joanails" />
       </div>
     </Fragment>
 
@@ -255,7 +267,7 @@ const metadata = {
   <!-- FAQs Widget ******************* -->
 
   <FAQs
-    id=faqs
+    id="faqs"
     title="Questions fréquemment posées"
     subtitle="Je réponds ici aux questions que vous vous posez."
     tagline="FAQs"
@@ -285,16 +297,11 @@ const metadata = {
   />
 
   <!-- <Instagram /> -->
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-secondary dark:bg-secondary"></div>
-    </Fragment>
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-secondary dark:bg-secondary"></div>
+  </Fragment>
 
-
-
-  <Content
-    id="joanails-map"
-    title="Le salon n'attend plus que vous !"
-  >
+  <Content id="joanails-map" title="Le salon n'attend plus que vous !">
     <Fragment slot="content">
       <CallToAction
         actions={[
@@ -308,7 +315,7 @@ const metadata = {
         ]}
       >
         <Fragment slot="subtitle">Vérifiez les avis des clients</Fragment>
-        <Fragment slot="subtitle"><GoogleReview/></Fragment>
+        <Fragment slot="subtitle"><GoogleReview /></Fragment>
         <Fragment slot="subtitle">Et faites vous plaisir !</Fragment>
       </CallToAction>
     </Fragment>
@@ -321,5 +328,4 @@ const metadata = {
       <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
 </Layout>
