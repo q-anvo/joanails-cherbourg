@@ -31,15 +31,13 @@ Github Pages — Hébergement rapide et sécurisé
 
 ## 🧩 Remerciements et crédits
 
-Ce projet est basé en partie sur [AstroWind](https://github.com/arthelokyo/astrowind),  
-distribué sous la licence MIT par [LICENCE.md](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md).
+Ce projet est basé en partie sur [AstroWind](https://github.com/arthelokyo/astrowind), distribué sous la licence MIT par [LICENCE.md](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md).
 
 Les modifications et personnalisations ont été réalisées pour le site **Joa Nails – Cherbourg**.
 
 
 ## 📄 Licence
 
-Ce projet est distribué sous la licence **MIT**.  
-Basé en partie sur [licence **MIT**](LICENCE.md).
+Ce projet est distribué sous la [licence **MIT**](LICENSE.md).
 
-© Joa Nails – Cherbourg. Tous droits réservés.
+© q-anvo. Tous droits réservés.
