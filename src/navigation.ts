@@ -1,22 +1,20 @@
-import { getPermalink } from './utils/permalinks';
-
 export const headerData = {
   links: [
     {
       text: 'Mes prestations',
-      href: '#prestations',
+      href: '/#prestations',
     },
     {
       text: 'Prendre RDV',
-      href: '#reservations',
+      href: '/#reservations',
     },
     {
       text: 'Mon salon',
-      href: '#salon',
+      href: '/#salon',
     },
     {
       text: 'Mes réalisations',
-      href: '#realisations',
+      href: '/#realisations',
     },
   ],
 };
@@ -26,10 +24,10 @@ export const footerData = {
     {
       title: 'Parcourir le site',
       links: [
-        { text: 'Mes prestations', href: '#prestations' },
-        { text: 'Prendre RDV', href: '#reservations' },
-        { text: 'Mon salon', href: '#salon' },
-        { text: 'Mes réalisations', href: '#realisations' },
+        { text: 'Mes prestations', href: '/#prestations' },
+        { text: 'Prendre RDV', href: '/#reservations' },
+        { text: 'Mon salon', href: '/#salon' },
+        { text: 'Mes réalisations', href: '/#realisations' },
         { text: 'FAQs', href: '#faqs' },
       ],
     },
@@ -52,7 +50,7 @@ export const footerData = {
     { ariaLabel: 'Fresha', icon: 'tabler:app-window', href: 'https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v' },
   ],
   footNote: `
-    <a class="underline dark:text-muted" href="/mentions"> Mentions Légales </a> - 
+    <a class="underline dark:text-muted" href="/mentions"> Mentions Légales </a> - <a class="underline dark:text-muted" href="/privacy"> Politique de confidentialité </a> - 
     Made with love by <a class="underline dark:text-muted" href="https://q-anvo.github.io"> Q.A</a> -
     Tout droits réservés.
   `,

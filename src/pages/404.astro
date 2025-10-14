@@ -1,24 +1,27 @@
 ---
-import Layout from '~/layouts/Layout.astro';
-import { getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/LandingLayout.astro';
 
-const title = `Page non trouvée`;
+import Hero2 from '~/components/widgets/Hero2.astro';
+
+const metadata = {
+  title: 'Page non trouvée',
+};
 ---
 
-<Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-      <div class="text-center">
-        <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
-        </h2>
-        <p class="text-3xl font-semibold md:text-3xl">💅 Oups… Cette page s’est écaillée !</p>
-        <p class="mt-12 mb-8 text-5xl text-muted dark:text-slate-400">
-          Comme un vernis mal appliqué, cette page a disparu… <br /> mais pas votre style !
-        </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Retour à l'accueil</a>
-      </div>
-    </div>
-  </section>
+<Layout metadata={metadata}>
+  <!-- Hero2 Widget ******************* -->
+  <h1
+    class="text-center text-5xl md:text-6xl font-bold"
+  >
+    Error <span class="size-3xl text-secondary">404</span>
+  </h1>
+
+  <Hero2
+    tagline="Oups… Un ongle cassé... <br />"
+    title='On répare ça ! 💅'
+    actions={[
+      { text: 'Revenez à nos ongles parfait', href: '/', icon: 'tabler:square-rounded-arrow-right' },
+    ]}
+    image={{ src: '~/assets/images/logo.png', alt: 'Logo Joa nails Cherbourg' }}
+  />
 </Layout>
