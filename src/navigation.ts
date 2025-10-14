@@ -28,7 +28,7 @@ export const footerData = {
         { text: 'Prendre RDV', href: '/#reservations' },
         { text: 'Mon salon', href: '/#salon' },
         { text: 'Mes réalisations', href: '/#realisations' },
-        { text: 'FAQs', href: '#faqs' },
+        { text: 'FAQs', href: '/#faqs' },
       ],
     },
   ],
