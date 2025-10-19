@@ -1,0 +1,1 @@
+import"https://cdn.jsdelivr.net/npm/@ptkdev/webcomponent-instagram-widget@latest/dist/lib/en/instagram-widget.min.js";
