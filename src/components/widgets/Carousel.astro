@@ -1,0 +1,113 @@
+---
+interface Props {
+  items?: Array<{ id: string }>;
+  forcedClass?: string;
+}
+
+const { items = [], forcedClass } = Astro.props;
+const carouselClass = forcedClass ?? `carousel-${Math.random().toString(36).slice(2, 10)}`;
+---
+<div class="carousel-wrapper">
+  <div class="carousel" id={carouselClass} tabindex="0">
+    {items.length > 0 && <div class="carousel-slide" data-id={items[items.length-1].id}></div>}
+    {items.map(item => (
+      <div class="carousel-slide" data-id={item.id}>
+        <div class="embed-wrap" data-loaded="false"></div>
+      </div>
+    ))}
+    {items.length > 0 && <div class="carousel-slide" data-id={items[0].id}></div>}
+  </div>
+
+  <div class="carousel-buttons">
+    <button id={`${carouselClass}-prev`}>&#10094;</button>
+    <button id={`${carouselClass}-next`}>&#10095;</button>
+  </div>
+
+  <script is:inline define:vars={{ carousel: { carouselClass } }}>
+  (function(){
+    const root=document.getElementById(carousel.carouselClass);
+    if(!root) return;
+    const slides=Array.from(root.querySelectorAll('.carousel-slide'));
+    const prev=document.getElementById(`${carousel.carouselClass}-prev`);
+    const next=document.getElementById(`${carousel.carouselClass}-next`);
+    const total=slides.length;
+    let active=1;
+
+    const loadSlide=(s)=>{
+      if(s.dataset.loaded==="true") return;
+      const id=s.dataset.id;
+      if(!id) return;
+      const b=document.createElement('blockquote');
+      b.className='instagram-media';
+      b.dataset.instgrmVersion='14';
+      b.style.margin='0 auto';
+      b.style.maxWidth='540px';
+      b.innerHTML=`<a href="https://www.instagram.com/${id}/"></a>`;
+      s.querySelector('.embed-wrap')?.appendChild(b);
+      s.dataset.loaded="true";
+      if(window.instgrm?.Embeds) window.instgrm.Embeds.process();
+      else if(!window.__insta_embed_script_injected){
+        const sc=document.createElement('script');
+        sc.async=true;
+        sc.src="//www.instagram.com/embed.js";
+        sc.onload=()=>window.instgrm?.Embeds.process();
+        document.head.appendChild(sc);
+        window.__insta_embed_script_injected=true;
+      }
+    };
+
+    const update=()=>{
+      root.style.transition='transform .5s ease';
+      root.style.transform=`translateX(-${active*100}%)`;
+      loadSlide(slides[active]);
+      loadSlide(slides[active+1<total?active+1:1]);
+      loadSlide(slides[active-1>=0?active-1:total-2]);
+    };
+
+    const showNext=()=>{
+      active++;
+      update();
+      if(active===total-1){
+        setTimeout(()=>{
+          root.style.transition='none';
+          active=1;
+          root.style.transform=`translateX(-${active*100}%)`;
+        },500);
+      }
+    };
+
+    const showPrev=()=>{
+      active--;
+      update();
+      if(active===0){
+        setTimeout(()=>{
+          root.style.transition='none';
+          active=total-2;
+          root.style.transform=`translateX(-${active*100}%)`;
+        },500);
+      }
+    };
+
+    prev?.addEventListener('click',showPrev);
+    next?.addEventListener('click',showNext);
+    root.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'){e.preventDefault();showPrev();}
+      if(e.key==='ArrowRight'){e.preventDefault();showNext();}
+    });
+
+    root.style.transform=`translateX(-${active*100}%)`;
+    slides.forEach(s=>loadSlide(s));
+  })();
+  </script>
+</div>
+
+<style>
+.carousel-wrapper{max-width:650px;margin:0 auto;overflow:hidden;position:relative}
+.carousel{display:flex;transition:transform .5s ease;will-change:transform}
+.carousel-slide{flex:0 0 100%;display:flex;justify-content:center;align-items:center;min-height:420px}
+.embed-wrap{width:100%;max-width:540px;margin:0 auto;display:flex;justify-content:center;overflow:hidden}
+.carousel-buttons{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:50}
+.carousel-buttons button{pointer-events:auto;cursor:pointer;border-radius:50%;width:40px;height:40px;border:none;font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+.carousel-buttons button:disabled{opacity:.35;cursor:default}
+@media(max-width:600px){.carousel-buttons button{width:50px;height:50px;font-size:2rem}}
+</style>

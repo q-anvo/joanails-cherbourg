@@ -3,8 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero3 from '~/components/widgets/Hero3.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features4 from '~/components/widgets/Features4.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features4 from '~/components/widgets/Features4.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import JoanailsMap from '~/components/widgets/JoanailsMap.astro';
@@ -13,6 +13,9 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Gallery from '~/components/widgets/Gallery.astro';
 import GoogleReview from '~/components/widgets/GoogleReview.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import Image from '~/components/common/Image.astro';
+import InstagramGallery from '~/components/widgets/InstagramGallery.astro';
 
 const metadata = {
   title: 'Joanails - Salon de manucure à Cherbourg | Onglerie, Gel & Nail Art',
@@ -73,7 +76,7 @@ const metadata = {
   <!-- Note Widget ******************* -->
 
   <Note
-    title="Joanails:"
+    title="Joanails Cherbourg:"
     description="Profitez d’un moment de détente dans un cocon proche du centre ville de Cherbourg. "
   />
 
@@ -172,7 +175,7 @@ const metadata = {
   <Content
     id="salon"
     isReversed
-    tagline="Situé au cœur de Cherbourg-en-Cotentin, notre salon de manucure vous offre un espace moderne et relaxant pour sublimer vos ongles."
+    tagline="Situé au cœur de Cherbourg-en-Cotentin"
     title="Mon salon"
     items={[
       {
@@ -192,9 +195,14 @@ const metadata = {
     image={{ src: '~/assets/images/salon1.jpg', alt: 'Salon Joanails' }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        C'est avec grand plaisir que je prendrais soin de vos mains
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
+        C'est avec grand plaisir que je prendrais soin de vos mains et de vos pieds !
       </h3>
+      <div class="flex items-center justify-center gap-12">
+        <Image src="~/assets/images/ponceuse.png" alt="lime" class="max-h-24 max-w-24" height={120} width={120} layout="contained" />
+        <Image src="~/assets/images/seche_main.png" alt="seche main" class="max-h-24 max-w-24" height={120} width={120} layout="contained" />
+        <Image src="~/assets/images/vernis.png" alt="vernis" class="max-h-24 max-w-24" height={120} width={120} layout="contained" />
+      </div>
     </Fragment>
 
     <Fragment slot="bg">
@@ -216,20 +224,45 @@ const metadata = {
     ]}
     image={{ src: '~/assets/images/salon2.jpg', alt: 'Salon Joanails 2' }}
   >
-    <Fragment slot="content">La beauté sur mesure dans un espace dédié à la détente et au bien-être</Fragment>
+    <Fragment slot="content">
+      <h4 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        La beauté sur mesure dans un espace dédié à la détente et au bien-être
+      </h4>
+      <div class="flex items-center justify-center gap-8 md:w-50">
+        <Image src="~/assets/images/produits.png" alt="Produits de manucure" height={120} width={120} layout="contained" />
+        <Image src="~/assets/images/mains.png" alt="Mains d'expert" height={120} width={120} layout="contained" />
+        <Image src="~/assets/images/bain.png" alt="Bain marie" height={120} width={120} layout="contained" />
+      </div>
+    </Fragment>
+  </Content>
 
+  <Brands
+    title="Mes marques partenaires"
+    subtitle="Des produits professionnels, formulés pour prendre soin de vos ongles tout en douceur."
+    images={[
+      { src: '~/assets/images/almas.png', alt: 'NAIL' },
+      { src: '~/assets/images/the-base.png', alt: 'NAIL' },
+      { src: '~/assets/images/albi.png', alt: 'NAIL' },
+    ]}
+  >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-secondary dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Brands>
+
   <!-- Features Widget *************** -->
-  <Content id="realisations" title="Réalisations">
+  <Content id="realisations" title="Mes réalisations">
     <Fragment slot="content">
       <Gallery
         images={[
           { src: '/images/nail-art-cherbourg-1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
           { src: '/images/nail-art-cherbourg-2.jpg', alt: 'Pose Cat eyes', width: 1080, height: 1350 },
-          { src: '/images/nail-art-cherbourg-3.png', alt: 'Pose complète avec rallongement', width: 1080, height: 1350 },
+          {
+            src: '/images/nail-art-cherbourg-3.png',
+            alt: 'Pose complète avec rallongement',
+            width: 1080,
+            height: 1350,
+          },
           { src: '/images/nail-art-cherbourg-4.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
           { src: '/images/nail-art-cherbourg-5.png', alt: 'Pose Nail art', width: 1080, height: 1350 },
           { src: '/images/nail-art-cherbourg-6.jpg', alt: 'Pose Nail art', width: 1080, height: 1350 },
@@ -248,8 +281,12 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Stats Widget ****************** -->
+  <!-- Instagram widget -->
+  <section class="bg-floral-sides">
+    <InstagramGallery isAfterContent />
+  </section>
 
+  <!-- Stats Widget ****************** -->
   <Stats
     stats={[
       { title: 'précision ', amount: '100%' },
@@ -264,7 +301,6 @@ const metadata = {
   </Stats>
 
   <!-- FAQs Widget ******************* -->
-
   <FAQs
     id="faqs"
     title="Questions fréquemment posées"
@@ -294,11 +330,6 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- <Instagram /> -->
-  <Fragment slot="bg">
-    <div class="absolute inset-0 bg-secondary dark:bg-secondary"></div>
-  </Fragment>
 
   <Content id="joanails-map" title="Le salon n'attend plus que vous !">
     <Fragment slot="content">
