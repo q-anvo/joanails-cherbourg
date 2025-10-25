@@ -199,38 +199,37 @@ const metadata = {
         C'est avec grand plaisir que je prendrais soin de vos mains et de vos pieds !
       </h3>
       <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-      <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 pt-6">
-        <Image 
-          src="~/assets/images/ponceuse.png" 
-          alt="lime" 
-          class="max-h-24 max-w-24" 
-          height={120} 
-          width={120} 
-          layout="contained" 
-        />
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 pt-6 dark:invert">
+          <Image
+            src="~/assets/images/ponceuse.png"
+            alt="lime"
+            class="max-h-24 max-w-24"
+            height={120}
+            width={120}
+            layout="contained"
+          />
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 dark:invert">
+          <Image
+            src="~/assets/images/seche_main.png"
+            alt="seche main"
+            class="max-h-24 max-w-24"
+            height={120}
+            width={120}
+            layout="contained"
+          />
+        </div>
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 dark:invert">
+          <Image
+            src="~/assets/images/vernis.png"
+            alt="vernis"
+            class="max-h-24 max-w-24"
+            height={120}
+            width={120}
+            layout="contained"
+          />
+        </div>
       </div>
-      <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0">
-        <Image 
-          src="~/assets/images/seche_main.png" 
-          alt="seche main" 
-          class="max-h-24 max-w-24" 
-          height={120} 
-          width={120} 
-          layout="contained" 
-        />
-      </div>
-      <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0">
-        <Image 
-          src="~/assets/images/vernis.png" 
-          alt="vernis" 
-          class="max-h-24 max-w-24" 
-          height={120} 
-          width={120} 
-          layout="contained" 
-        />
-      </div>
-    </div>
-
     </Fragment>
 
     <Fragment slot="bg">
@@ -257,13 +256,19 @@ const metadata = {
         La beauté sur mesure dans un espace dédié à la détente et au bien-être
       </h4>
       <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 pt-6">
-        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0">
-          <Image src="~/assets/images/produits.png" alt="Produits de manucure" height={120} width={120} layout="contained" />
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 dark:invert">
+          <Image
+            src="~/assets/images/produits.png"
+            alt="Produits de manucure"
+            height={120}
+            width={120}
+            layout="contained"
+          />
         </div>
-        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0">
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 dark:invert">
           <Image src="~/assets/images/mains.png" alt="Mains d'expert" height={120} width={120} layout="contained" />
         </div>
-        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0">
+        <div class="w-1/2 sm:w-1/3 md:w-auto flex justify-center mb-4 md:mb-0 dark:invert">
           <Image src="~/assets/images/bain.png" alt="Bain marie" height={120} width={120} layout="contained" />
         </div>
       </div>
@@ -287,9 +292,11 @@ const metadata = {
   <!-- Features Widget *************** -->
   <Content id="realisations" title="Mes réalisations">
     <Fragment slot="content">
+      <div class="pb-6 w-2/3 m-auto"><img src="/images/logo.png" class="invert sepia saturate-200 hue-rotate-280" alt="logo joanails" /></div>
+
       <Gallery
         images={[
-          { src: '/images/nail-art-cherbourg-1.png', alt: 'Pose de vernis semi-permanent', width: 1080, height: 1350 },
+          { src: '/images/nail-art-cherbourg-1.png', alt: 'Présentoire nail art', width: 1080, height: 1350 },
           { src: '/images/nail-art-cherbourg-2.jpg', alt: 'Pose Cat eyes', width: 1080, height: 1350 },
           {
             src: '/images/nail-art-cherbourg-3.png',
@@ -305,8 +312,14 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="image">
-      <div class="relative m-auto max-w-4xl">
-        <img src="/images/logo.png" class="invert sepia saturate-200 hue-rotate-280" alt="logo joanails" />
+      <div class="pt-24">
+        <a href="/images/presentoire-nail-art.jpg" data-pswp-width="1080" data-pswp-height="800" class="block">
+          <img
+            src="/images/presentoire-nail-art.jpg"
+            alt="Présentoire nail art"
+            class="rounded-xl shadow-lg w-full object-cover hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+          />
+        </a>
       </div>
     </Fragment>
 
