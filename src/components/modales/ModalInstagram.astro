@@ -1,0 +1,233 @@
+---
+import InstagramPosts from '~/assets/instagram.json';
+
+export interface Props {
+  instanceId?: string;
+}
+const { instanceId = 'default' } = Astro.props;
+const posts = (InstagramPosts as any[]).slice(0, 9);
+const postsData = posts.map((p: any) => ({
+  image: p.image || p.media_url || '',
+  caption: p.caption || '',
+  permalink: p.permalink || '',
+  timestamp: p.timestamp || '',
+}));
+---
+
+<div data-mi-root={instanceId}>
+  <div class="insta-header">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="rgb(211,118,129)" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+    <a href="https://www.instagram.com/joanails.cherbourg/" target="_blank" rel="noopener" class="insta-handle">
+      @joanails.cherbourg
+    </a>
+  </div>
+
+  <div class="insta-grid">
+    {posts.map((post: any, i: number) => (
+      <button class="insta-item" data-index={String(i)} aria-label="Voir le post Instagram">
+        <img
+          src={(post.thumbnail || post.media_url) ?? ''}
+          alt="Post Instagram Joanails"
+          loading="lazy"
+        />
+        <div class="insta-overlay" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="white" width="20" height="20" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </div>
+      </button>
+    ))}
+  </div>
+
+  <div class="insta-card" hidden>
+    <button class="insta-card-close" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img class="insta-card-img" src="" alt="Post Instagram Joanails" />
+    <div class="insta-card-body">
+      <p class="insta-card-caption"></p>
+      <div class="insta-card-footer">
+        <time class="insta-card-date"></time>
+        <a class="insta-card-link" href="#" target="_blank" rel="noopener">
+          Voir sur Instagram
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ postsData, instanceId }}>
+  (function () {
+    var root = document.querySelector('[data-mi-root="' + instanceId + '"]');
+    if (!root) return;
+    var grid = root.querySelector('.insta-grid');
+    var card = root.querySelector('.insta-card');
+    var cardImg = root.querySelector('.insta-card-img');
+    var cardCaption = root.querySelector('.insta-card-caption');
+    var cardDate = root.querySelector('.insta-card-date');
+    var cardLink = root.querySelector('.insta-card-link');
+    var cardClose = root.querySelector('.insta-card-close');
+
+    function showCard(idx) {
+      var post = postsData[idx];
+      if (!post || !grid || !card) return;
+      cardImg.src = post.image || '';
+      cardImg.alt = post.caption ? post.caption.substring(0, 60) : 'Post Instagram Joanails';
+      cardCaption.textContent = post.caption || '';
+      cardLink.href = post.permalink || '#';
+      if (post.timestamp) {
+        var d = new Date(post.timestamp);
+        cardDate.textContent = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        cardDate.dateTime = post.timestamp;
+      } else {
+        cardDate.textContent = '';
+      }
+      grid.hidden = true;
+      card.hidden = false;
+    }
+
+    function hideCard() {
+      if (!card || !grid) return;
+      card.hidden = true;
+      grid.hidden = false;
+    }
+
+    root.querySelectorAll('.insta-item').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.dataset.index || '0', 10);
+        showCard(idx);
+      });
+    });
+
+    if (cardClose) cardClose.addEventListener('click', hideCard);
+  })();
+</script>
+
+<style>
+  .insta-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .insta-handle {
+    color: rgb(211, 118, 129);
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+  .insta-handle:hover { text-decoration: underline; }
+
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .insta-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: block;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: rgba(211, 118, 129, .08);
+  }
+  .insta-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  .insta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(211, 118, 129, .45);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .insta-item:hover .insta-overlay { opacity: 1; }
+  .insta-item:hover img { transform: scale(1.05); }
+  .insta-item:focus-visible { outline: 2px solid rgb(211, 118, 129); outline-offset: 2px; }
+
+  .insta-card { animation: card-in 0.22s ease both; }
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .insta-card-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    margin-left: auto;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(140, 95, 60, .12);
+    border: none;
+    cursor: pointer;
+    color: rgb(80, 50, 30);
+    transition: background 0.15s;
+  }
+  .insta-card-close:hover { background: rgba(140, 95, 60, .22); }
+
+  .insta-card-img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 300px;
+    display: block;
+  }
+  @media (min-width: 1024px) {
+    .insta-card-img { max-height: 55svh; }
+  }
+  .insta-card-body { padding: 0.75rem 0 0.25rem; }
+
+  .insta-card-caption {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: rgb(60, 40, 20);
+    margin: 0 0 0.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .insta-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .insta-card-date {
+    font-size: 0.7rem;
+    color: rgb(140, 100, 70);
+    font-style: italic;
+  }
+  .insta-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgb(211, 118, 129);
+    text-decoration: none;
+    font-family: var(--aw-font-heading, sans-serif);
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .insta-card-link:hover { color: rgb(180, 90, 100); text-decoration: underline; }
+</style>
