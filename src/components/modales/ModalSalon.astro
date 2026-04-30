@@ -1,0 +1,160 @@
+---
+import ponceuse from '~/assets/images/ponceuse.png';
+import secheMain from '~/assets/images/seche_main.png';
+import vernis from '~/assets/images/vernis.png';
+import produits from '~/assets/images/produits.png';
+import mains from '~/assets/images/mains.png';
+import bain from '~/assets/images/bain.png';
+---
+
+<div class="salon-content">
+
+  <div class="salon-photos">
+    <img src="/images/salon1.jpg" alt="Espace manucure Joanails" class="salon-photo" loading="lazy" />
+    <img src="/images/salon2.jpg" alt="Espace détente Joanails" class="salon-photo" loading="lazy" />
+  </div>
+
+  <p class="salon-intro">C'est avec grand plaisir que je prendrai soin de vos mains et de vos pieds !</p>
+
+  <div class="salon-features">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={ponceuse.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">À proximité de tout</span>
+        <span class="feature-desc">Un cocon de beauté proche du centre-ville de Cherbourg.</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={vernis.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">Équipé et moderne</span>
+        <span class="feature-desc">Tous les équipements pour sublimer vos mains et vos pieds.</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={secheMain.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">Pour tous les goûts</span>
+        <span class="feature-desc">De la couleur classique aux strass, paillettes et nail art sur mesure.</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={mains.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">Confort optimal</span>
+        <span class="feature-desc">Un espace cocooning dédié au bien-être de vos mains et vos pieds.</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={produits.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">Ambiance florale</span>
+        <span class="feature-desc">Un décor chaleureux aux touches délicates et fleuries.</span>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <img src={bain.src} alt="" class="illus" aria-hidden="true" />
+      </div>
+      <div class="feature-text">
+        <span class="feature-title">Beauté sur mesure</span>
+        <span class="feature-desc">Chaque prestation est adaptée à vos envies et vos besoins.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .salon-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .salon-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .salon-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .salon-intro {
+    font-family: var(--aw-font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(80, 48, 28);
+    text-align: center;
+    margin: 0;
+    line-height: 1.45;
+    padding: 0 0.25rem;
+  }
+
+  .salon-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .feature-card {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    background: rgba(231, 193, 155, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 14px;
+    padding: 0.875rem 1rem;
+  }
+
+  .feature-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .illus {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: sepia(0.3) saturate(1.2);
+  }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .feature-title {
+    font-family: var(--aw-font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: rgb(80, 48, 28);
+  }
+  .feature-desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: rgb(91, 75, 64);
+  }
+</style>

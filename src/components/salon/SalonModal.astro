@@ -1,0 +1,67 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+
+<div
+  class="modal-overlay"
+  data-modal-id={id}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={`modal-title-${id}`}
+>
+  <div class="modal-panel" role="document">
+    <div class="modal-header">
+      <h2 id={`modal-title-${id}`} class="modal-title">{title}</h2>
+      <button class="modal-close-btn" data-modal-close aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(211, 118, 129, 0.25);
+  }
+  .modal-title {
+    font-family: var(--aw-font-heading);
+    font-size: 1.5rem;
+    color: rgb(211, 118, 129);
+    margin: 0;
+  }
+  .modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(91, 75, 64, 0.2);
+    background: rgba(231, 193, 155, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(91, 75, 64);
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+  }
+  .modal-close-btn:hover {
+    background: rgba(211, 118, 129, 0.2);
+  }
+  .modal-body {
+    color: rgb(91, 75, 64);
+    font-family: var(--aw-font-sans);
+  }
+</style>

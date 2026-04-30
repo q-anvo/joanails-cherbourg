@@ -1,0 +1,35 @@
+---
+---
+
+<div class="apropos-content">
+  <div class="apropos-photos">
+    <img src="/images/salon1.jpg" alt="Salon Joanails" class="apropos-photo" />
+    <img src="/images/salon2.jpg" alt="Espace détente Joanails" class="apropos-photo" />
+  </div>
+  <p>
+    Bienvenue chez <strong>Joanails</strong>, salon de prothésie ongulaire situé au
+    <strong>73 rue du Val de Saire</strong> à Cherbourg-en-Cotentin.
+  </p>
+  <p>
+    Dans un cocon chaleureux proche du centre-ville, Joan vous accueille pour sublimer
+    vos ongles&nbsp;: pose de gel, semi-permanent, nail art, strass et paillettes.
+    Chaque prestation est une invitation à prendre soin de vous.
+  </p>
+</div>
+
+<style>
+  .apropos-content { display: flex; flex-direction: column; gap: 1rem; }
+  .apropos-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .apropos-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  p { font-size: 0.9375rem; line-height: 1.7; margin: 0; }
+  strong { color: rgb(211, 118, 129); }
+</style>

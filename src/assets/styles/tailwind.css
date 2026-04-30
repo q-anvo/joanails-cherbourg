@@ -1,3 +1,6 @@
+@import './lofi.css';
+@import './glass.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,14 +123,14 @@
 }
 
 .bg-floral-sides::before {
-  left: -100px;
+  left: 0;
   transform: rotate(35deg);
   background-image: url("/images/flower-left.png");
 }
 
 .bg-floral-sides::after {
   right: 0;
-  transform: scaleX(-1) rotate(30deg);
+  transform: scaleX(-1);
   background-image: url("/images/flower-right.png");
 }
 

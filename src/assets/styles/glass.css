@@ -1,0 +1,96 @@
+/* src/assets/styles/glass.css */
+
+.glass {
+  background: rgba(231, 193, 155, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(91, 75, 64, 0.18);
+}
+
+.glass-dark {
+  background: rgba(91, 75, 64, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(231, 193, 155, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-label {
+  background: rgba(255, 245, 225, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 220, 160, 0.6);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-family: var(--aw-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgb(80, 52, 30);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(91, 75, 64, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal panel */
+.modal-panel {
+  background: rgba(242, 228, 208, 0.93);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 240, 210, 0.5);
+  border-radius: 28px;
+  box-shadow: 0 16px 48px rgba(40, 20, 10, 0.35), 0 0 0 1px rgba(180, 130, 80, 0.12);
+  padding: 2rem;
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  overflow-y: auto;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  position: relative;
+  font-size: 1rem;
+}
+.modal-overlay.open .modal-panel {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Modal scrollbar */
+.modal-panel::-webkit-scrollbar { width: 4px; }
+.modal-panel::-webkit-scrollbar-track { background: transparent; }
+.modal-panel::-webkit-scrollbar-thumb { background: rgba(140, 95, 60, 0.4); border-radius: 2px; }
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-panel {
+    border-radius: 28px 28px 0 0;
+    max-height: 90vh;
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+}

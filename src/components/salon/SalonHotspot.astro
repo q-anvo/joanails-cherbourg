@@ -1,0 +1,101 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  xLg?: number;
+  yLg?: number;
+}
+const { id, label, x, y, xLg, yLg } = Astro.props;
+---
+
+<button
+  class="hotspot-btn"
+  data-modal-target={id}
+  style={`--x:${x}%;--y:${y}%;--xl:${xLg ?? x}%;--yl:${yLg ?? y}%;`}
+  aria-label={`Ouvrir ${label}`}
+>
+  <span class="hotspot-dot" aria-hidden="true"></span>
+  <span class="hotspot-ring" aria-hidden="true"></span>
+  <span class="glass-label hotspot-label">{label}</span>
+</button>
+
+<style>
+  .hotspot-btn {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  @media (min-width: 1024px) {
+    .hotspot-btn {
+      left: var(--xl);
+      top: var(--yl);
+    }
+  }
+
+  .hotspot-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 215, 140, 0.95);
+    border: 1.5px solid rgba(255, 245, 200, 0.9);
+    box-shadow: 0 0 10px rgba(255, 190, 80, 0.7), 0 0 20px rgba(255, 160, 40, 0.3);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .hotspot-ring {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 200, 90, 0.6);
+    animation: hotspot-pulse 3s ease-out infinite;
+  }
+
+  @keyframes hotspot-pulse {
+    0%   { transform: translateX(-50%) scale(1); opacity: 0.7; }
+    70%  { transform: translateX(-50%) scale(2.8); opacity: 0; }
+    100% { transform: translateX(-50%) scale(2.8); opacity: 0; }
+  }
+
+  .hotspot-label {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    .hotspot-btn:hover .hotspot-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hotspot-btn:hover .hotspot-dot {
+      box-shadow: 0 0 16px rgba(255, 200, 80, 0.9), 0 0 30px rgba(255, 160, 40, 0.5);
+    }
+  }
+
+  @media (hover: none) {
+    .hotspot-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
