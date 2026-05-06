@@ -55,17 +55,17 @@
 
 /* Modal panel */
 .modal-panel {
-  background: rgba(242, 228, 208, 0.93);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background: rgb(242, 228, 208);
   border: 1px solid rgba(255, 240, 210, 0.5);
   border-radius: 28px;
   box-shadow: 0 16px 48px rgba(40, 20, 10, 0.35), 0 0 0 1px rgba(180, 130, 80, 0.12);
   padding: 2rem;
   width: 100%;
   max-width: 680px;
-  max-height: 85vh;
+  max-height: 85svh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   opacity: 0;
   transform: scale(0.95);
   transition: transform 0.25s ease, opacity 0.25s ease;
@@ -89,7 +89,7 @@
   }
   .modal-panel {
     border-radius: 28px 28px 0 0;
-    max-height: 90vh;
+    max-height: 90svh;
     max-width: 100%;
     padding: 1.5rem 1rem;
   }
