@@ -3,7 +3,7 @@ export const VISIT_STEPS = [
     title: 'Préparation',
     text: 'Soin des cuticules, limage et ponçage doux. On choisit ensemble la forme, la longueur et la teinte.',
   },
-  { title: 'Pose', text: 'Gainage, rallongement en gel ou semi-permanent, avec les produits The Base.' },
+  { title: 'Pose', text: 'Gainage, rallongement en gel ou semi-permanent, avec les produits Albi.' },
   {
     title: 'Finition',
     text: 'French, babyboomer, chrome, paillettes ou strass, puis une couche de finition qui brille longtemps.',

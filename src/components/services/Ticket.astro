@@ -1,14 +1,14 @@
 ---
 import { SALON } from '~/data/salon';
+
+import TicketLines from './TicketLines.astro';
 ---
 
 <aside class="ticket" aria-label="Votre pose">
   <header>
     <b>{SALON.brand}</b><small>{SALON.address.street} · Cherbourg</small>
   </header>
-  <ul class="picked" data-ticket-lines aria-live="polite">
-    <li class="empty" data-ticket-empty>Touchez une prestation pour l’ajouter.</li>
-  </ul>
+  <TicketLines />
   <div class="total"><span>Total</span><output data-ticket-total>0€</output></div>
   <div class="length"><span>Durée</span><span data-ticket-length>–</span></div>
   <p class="handoff" data-ticket-handoff hidden></p>
@@ -34,6 +34,15 @@ import { SALON } from '~/data/salon';
     mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 14px 100%;
   }
 
+  /* in-app browsers repaint a tilted, filtered layer on every frame of the total: keep it flat on touch screens */
+  @media (hover: none) {
+    .ticket {
+      rotate: none;
+      filter: none;
+      box-shadow: inset 0 0 0 1px var(--color-line);
+    }
+  }
+
   header {
     display: grid;
     gap: 2px;
@@ -52,58 +61,6 @@ import { SALON } from '~/data/salon';
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.7;
-  }
-
-  .picked {
-    display: grid;
-    gap: 6px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .picked :global(li) {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition:
-      grid-template-rows 0.35s var(--ease-salon),
-      opacity 0.35s,
-      margin 0.35s var(--ease-salon);
-  }
-
-  .picked :global(li > div) {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    min-height: 0;
-    overflow: hidden;
-  }
-
-  .picked :global(li span:last-child) {
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
-  @starting-style {
-    .picked :global(li) {
-      grid-template-rows: 0fr;
-      opacity: 0;
-    }
-  }
-
-  .picked :global(li.out) {
-    grid-template-rows: 0fr;
-    margin-top: -6px;
-    opacity: 0;
-    text-decoration: line-through;
-  }
-
-  .picked .empty {
-    opacity: 0.65;
-  }
-
-  .picked .empty[hidden] {
-    display: none;
   }
 
   .total {

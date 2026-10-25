@@ -2,7 +2,7 @@
 import posts from '~/assets/instagram.json';
 import SectionHead from '~/components/ui/SectionHead.astro';
 import { SALON } from '~/data/salon';
-import { excerpt, latestPosts, postDate } from '~/lib/instagram';
+import { excerpt, latestPosts, postAlt, postDate } from '~/lib/instagram';
 
 const GALLERY_SIZE = 9;
 const latest = latestPosts(posts, GALLERY_SIZE);
@@ -29,10 +29,18 @@ const latest = latestPosts(posts, GALLERY_SIZE);
             <li>
               <a class="post" href={post.permalink} target="_blank" rel="noopener">
                 <figure>
-                  <img src={post.thumbnail} alt={text} width="320" height="320" loading="lazy" decoding="async" />
+                  <img
+                    src={post.thumbnail}
+                    alt={postAlt(post)}
+                    width="320"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {post.video && <span class="play" aria-hidden="true" />}
                 </figure>
                 <time datetime={post.timestamp}>{postDate(post.timestamp)}</time>
-                <p>{text}</p>
+                {text && <p>{text}</p>}
               </a>
             </li>
           );
@@ -119,6 +127,7 @@ const latest = latestPosts(posts, GALLERY_SIZE);
   }
 
   figure {
+    position: relative;
     margin: 0;
     aspect-ratio: 1;
     overflow: hidden;
@@ -136,6 +145,28 @@ const latest = latestPosts(posts, GALLERY_SIZE);
 
   .post:hover img {
     transform: scale(1.05);
+  }
+
+  .play {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgb(42 29 22 / 0.7);
+  }
+
+  .play::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    translate: 2px 0;
+    border-block: 7px solid transparent;
+    border-left: 11px solid #fff;
   }
 
   time {

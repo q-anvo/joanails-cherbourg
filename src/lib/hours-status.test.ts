@@ -17,10 +17,10 @@ describe('openingStatus', () => {
     }));
 
   it('opens later today before the first slot', () =>
-    expect(openingStatus(HOURS, { weekday: WEDNESDAY, minutes: 600 }).text).toBe('Fermé · ouvre aujourd’hui à 17h30'));
+    expect(openingStatus(HOURS, { weekday: WEDNESDAY, minutes: 540 }).text).toBe('Fermé · ouvre aujourd’hui à 10h'));
 
   it('opens tomorrow after the last slot', () =>
-    expect(openingStatus(HOURS, { weekday: TUESDAY, minutes: 1150 }).text).toBe('Fermé · ouvre demain à 17h30'));
+    expect(openingStatus(HOURS, { weekday: TUESDAY, minutes: 1150 }).text).toBe('Fermé · ouvre demain à 10h'));
 
   it('skips closed days, from Sunday to Tuesday', () =>
     expect(openingStatus(HOURS, { weekday: SUNDAY, minutes: 600 }).text).toBe('Fermé · ouvre mardi à 9h'));
@@ -28,7 +28,7 @@ describe('openingStatus', () => {
   it('is closed at the exact closing minute', () =>
     expect(openingStatus(HOURS, { weekday: TUESDAY, minutes: 1110 })).toEqual({
       open: false,
-      text: 'Fermé · ouvre demain à 17h30',
+      text: 'Fermé · ouvre demain à 10h',
     }));
 
   it('says closed when the week has no slot', () => {

@@ -3,6 +3,10 @@ export interface InstagramPost {
   image: string;
   thumbnail: string;
   caption: string;
+  /** Describes the picture when the caption is missing or says nothing about it. */
+  alt?: string;
+  /** A reel: the thumbnail is its cover. */
+  video?: boolean;
   permalink: string;
   timestamp: string;
 }
@@ -20,6 +24,10 @@ export function excerpt(caption: string): string {
 export function latestPosts(posts: readonly InstagramPost[], count: number): InstagramPost[] {
   return [...posts].sort((a, b) => b.timestamp.localeCompare(a.timestamp)).slice(0, count);
 }
+
+/** Text alternative for a post thumbnail. */
+export const postAlt = (post: InstagramPost): string =>
+  post.alt ?? (excerpt(post.caption) || `Publication Instagram du ${postDate(post.timestamp)}`);
 
 const DAY = new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Europe/Paris',

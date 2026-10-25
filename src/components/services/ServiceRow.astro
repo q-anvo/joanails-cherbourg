@@ -35,8 +35,15 @@ const { service } = Astro.props;
       padding 0.4s var(--ease-salon);
   }
 
-  .row:hover {
-    padding-left: 12px;
+  /* touch screens keep :hover after a tap, which would shift the row */
+  @media (hover: hover) {
+    .row:hover {
+      padding-left: 12px;
+      background: color-mix(in oklab, var(--color-rose-2) 14%, transparent);
+    }
+  }
+
+  .row:active {
     background: color-mix(in oklab, var(--color-rose-2) 14%, transparent);
   }
 
