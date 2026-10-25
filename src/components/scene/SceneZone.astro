@@ -1,0 +1,150 @@
+---
+import { DRAWING, type SceneZone } from '~/data/scene';
+
+export interface Props {
+  zone: SceneZone;
+  drawingSrc: string;
+}
+
+const { zone, drawingSrc } = Astro.props;
+const { shape, halo, tag } = zone;
+const maskId = `zone-mask-${zone.id}`;
+const external = zone.external ? { target: '_blank', rel: 'noopener' } : {};
+---
+
+<a class="zone" href={zone.href} aria-label={zone.ariaLabel} {...external}>
+  <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={DRAWING.width} height={DRAWING.height}>
+    {
+      shape.kind === 'polygon' ? (
+        <polygon points={shape.points} fill="#fff" filter="url(#zone-feather)" />
+      ) : (
+        <circle cx={shape.cx} cy={shape.cy} r={shape.r} fill="#fff" filter="url(#zone-feather)" />
+      )
+    }
+  </mask>
+  <svg class="lit" aria-hidden="true">
+    <image
+      href={drawingSrc}
+      width={DRAWING.width}
+      height={DRAWING.height}
+      filter="url(#zone-light)"
+      mask={`url(#${maskId})`}
+    />
+  </svg>
+  {zone.hasCalendar && <g class="calendar" id="wall-calendar" aria-hidden="true" />}
+  <ellipse class="halo" cx={halo.cx} cy={halo.cy} rx={halo.rx} ry={halo.ry} fill="url(#zone-halo)"></ellipse>
+  <g class="tag">
+    <rect x={tag.x - tag.width / 2} y={tag.y - 16} width={tag.width} height="32" rx="16"></rect>
+    <text x={tag.x} y={tag.y} text-anchor="middle" dominant-baseline="central">{zone.label}</text>
+  </g>
+  <path class="trace" d={zone.hit} pathLength="182"></path>
+  <path class="hit" d={zone.hit}></path>
+</a>
+
+<style>
+  .zone {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .hit {
+    fill: transparent;
+    pointer-events: all;
+  }
+
+  .trace {
+    fill: none;
+    stroke: #fff0dc;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 0.1 11;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px rgb(255 214 140 / 0.9));
+    animation:
+      trace 2.8s linear infinite,
+      glint 3.6s ease-in-out infinite;
+    transition: opacity 0.6s var(--ease-salon);
+  }
+
+  .lit,
+  .halo,
+  .tag {
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.6s var(--ease-salon),
+      transform 0.6s var(--ease-salon);
+  }
+
+  .halo {
+    mix-blend-mode: screen;
+  }
+
+  .tag {
+    transform: translateY(8px);
+    filter: drop-shadow(0 4px 8px rgb(30 12 6 / 0.45));
+  }
+
+  .tag rect {
+    fill: var(--color-ground);
+    stroke: var(--color-rose-2);
+    stroke-width: 1.5;
+  }
+
+  .tag text {
+    fill: var(--color-ink);
+    font: 400 19px var(--font-display);
+    letter-spacing: 0.06em;
+  }
+
+  .calendar {
+    pointer-events: none;
+    transition: filter 0.6s var(--ease-salon);
+  }
+
+  .zone:is(:hover, :focus-visible, :global(.cue)) :is(.lit, .halo, .tag) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .zone:is(:hover, :focus-visible, :global(.cue)) .trace {
+    opacity: 0;
+    animation-play-state: paused;
+  }
+
+  .zone:is(:hover, :focus-visible, :global(.cue)) .calendar {
+    filter: brightness(1.15);
+  }
+
+  @keyframes trace {
+    to {
+      stroke-dashoffset: -22.2;
+    }
+  }
+
+  @keyframes glint {
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  @media (max-width: 1023.98px) {
+    .tag {
+      scale: 1.9;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .trace {
+      stroke-width: 6;
+    }
+  }
+
+  @media (hover: none) {
+    .tag {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

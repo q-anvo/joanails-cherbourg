@@ -1,0 +1,127 @@
+---
+import SectionHead from '~/components/ui/SectionHead.astro';
+import { FAQ, VISIT_STEPS } from '~/data/faq';
+---
+
+<section class="page-section" id="avant">
+  <div class="wrap">
+    <SectionHead eyebrow="Avant de venir">
+      <Fragment slot="title">Trois temps, <em>zéro</em> précipitation.</Fragment>
+      Une pose prend le temps qu’il faut. Voici comment se déroule votre passage au salon, et les réponses aux questions
+      qu’on nous pose le plus.
+    </SectionHead>
+    <ol class="steps">
+      {
+        VISIT_STEPS.map((step) => (
+          <li class="rise">
+            <h3 class="display">{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="faq">
+      {
+        FAQ.map((entry) => (
+          <details>
+            <summary>{entry.question}</summary>
+            <p>{entry.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .steps li {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid var(--color-line);
+    border-radius: 22px;
+    background: var(--color-ground-2);
+    counter-increment: step;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    font: 400 3rem / 1 var(--font-display);
+    color: var(--color-rose);
+  }
+
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-ink-soft);
+  }
+
+  .faq {
+    display: grid;
+    gap: 10px;
+    max-width: 760px;
+    margin-top: clamp(32px, 5cqi, 56px);
+  }
+
+  details {
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    background: var(--color-ground-2);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    font: 400 1.15rem / 1.35 var(--font-display);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: '+';
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-rose-2);
+    border-radius: 50%;
+    color: var(--color-rose-2);
+    transition: rotate 0.4s var(--ease-salon);
+  }
+
+  details[open] summary::after {
+    rotate: 45deg;
+  }
+
+  details p {
+    max-width: 62ch;
+    padding: 0 22px 20px;
+  }
+
+  @container (min-width: 720px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

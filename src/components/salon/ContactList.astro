@@ -1,0 +1,46 @@
+---
+import { SALON } from '~/data/salon';
+---
+
+<div class="contact">
+  <div>
+    <p class="eyebrow">Adresse</p>
+    <a href={SALON.maps.search} target="_blank" rel="noopener">
+      {SALON.address.street}<br />{SALON.address.postalCode}
+      {SALON.address.city}
+    </a>
+  </div>
+  <div>
+    <p class="eyebrow">Téléphone</p>
+    <a href={`tel:${SALON.phone.international}`}>{SALON.phone.display}</a>
+  </div>
+  <div>
+    <p class="eyebrow">Instagram</p>
+    <a href={SALON.instagram.url} target="_blank" rel="noopener">{SALON.instagram.handle}</a>
+  </div>
+</div>
+
+<style>
+  .contact {
+    display: grid;
+    gap: 22px;
+    margin-top: 36px;
+  }
+
+  .contact div {
+    display: grid;
+    align-content: start;
+    gap: 4px;
+  }
+
+  a {
+    text-decoration-color: var(--color-rose);
+    text-underline-offset: 4px;
+  }
+
+  @container (min-width: 620px) {
+    .contact {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

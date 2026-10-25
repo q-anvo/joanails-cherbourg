@@ -1,0 +1,53 @@
+---
+import { DRAWING, ZONES } from '~/data/scene';
+
+import SceneZone from './SceneZone.astro';
+
+export interface Props {
+  drawingSrc: string;
+}
+
+const { drawingSrc } = Astro.props;
+---
+
+<svg class="zones" viewBox={`0 0 ${DRAWING.width} ${DRAWING.height}`} preserveAspectRatio="none">
+  <defs>
+    <filter id="zone-light" color-interpolation-filters="sRGB">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.35"></feFuncR>
+        <feFuncG type="linear" slope="1.3"></feFuncG>
+        <feFuncB type="linear" slope="1.15"></feFuncB>
+      </feComponentTransfer>
+    </filter>
+    <filter id="zone-feather" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+    </filter>
+    <radialGradient id="zone-halo">
+      <stop offset="0" stop-color="#ffd68c" stop-opacity=".5"></stop>
+      <stop offset="1" stop-color="#ffd68c" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  {ZONES.map((zone) => <SceneZone zone={zone} drawingSrc={drawingSrc} />)}
+</svg>
+
+<script>
+  import '~/scripts/scene-zones';
+  import '~/scripts/wall-calendar';
+</script>
+
+<style>
+  .zones {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    animation: zones-on 2.4s var(--ease-salon) both;
+  }
+
+  @keyframes zones-on {
+    from {
+      filter: brightness(0.35) saturate(0.6);
+    }
+  }
+</style>

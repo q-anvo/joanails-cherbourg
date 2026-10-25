@@ -1,0 +1,54 @@
+---
+import CategoryTabs from '~/components/services/CategoryTabs.astro';
+import ServiceGroup from '~/components/services/ServiceGroup.astro';
+import Ticket from '~/components/services/Ticket.astro';
+import SectionHead from '~/components/ui/SectionHead.astro';
+import { MENU } from '~/data/menu';
+---
+
+<section class="page-section" id="tarifs">
+  <div class="wrap">
+    <SectionHead eyebrow="Prestations & tarifs">
+      <Fragment slot="title">Composez <em>votre</em> pose.</Fragment>
+      Touchez une prestation pour l’ajouter au ticket. Le total se calcule en direct, et Fresha s’ouvre avec votre pose déjà
+      cochée.
+    </SectionHead>
+    <div class="menu">
+      <div class="groups">
+        <CategoryTabs groups={MENU} />
+        {MENU.map((group, index) => <ServiceGroup group={group} index={index} />)}
+      </div>
+      <Ticket />
+    </div>
+  </div>
+</section>
+
+<script>
+  import '~/scripts/ticket';
+</script>
+
+<style>
+  .menu {
+    display: grid;
+    align-items: start;
+    gap: clamp(32px, 5cqi, 56px);
+  }
+
+  .groups {
+    display: grid;
+    gap: 48px;
+    min-width: 0;
+  }
+
+  @container (min-width: 760px) {
+    .menu {
+      grid-template-columns: 1fr 300px;
+    }
+  }
+
+  @container (max-width: 759.98px) {
+    .groups {
+      gap: 0;
+    }
+  }
+</style>

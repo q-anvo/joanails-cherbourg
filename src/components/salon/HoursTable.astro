@@ -1,0 +1,57 @@
+---
+import { HOURS } from '~/data/hours';
+import { clock } from '~/lib/format';
+---
+
+<table aria-label="Horaires d’ouverture">
+  <tbody>
+    {
+      HOURS.map((day) => (
+        <tr class:list={{ closed: !day.slots.length }} data-weekday={day.weekday}>
+          <td>{day.name}</td>
+          <td>
+            {day.slots.length
+              ? day.slots.map(([opens, closes]) => `${clock(opens)} – ${clock(closes)}`).join(', ')
+              : 'Fermé'}
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  td {
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  td:last-child {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    text-align: right;
+    color: var(--color-caramel);
+  }
+
+  tr:global(.today) td {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  tr:global(.today) td:first-child::after {
+    content: ' · aujourd’hui';
+    font-size: var(--step--1);
+    font-weight: 400;
+    color: var(--color-rose-2);
+  }
+
+  .closed td:last-child {
+    color: var(--color-ink-soft);
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+import { SALON } from '~/data/salon';
+---
+
+<a class="book" data-compose href={SALON.fresha.booking} target="_blank" rel="noopener">
+  Réserver<small data-ticket-summary hidden></small>
+</a>
+
+<style>
+  .book {
+    position: fixed;
+    z-index: 40;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: var(--color-rose);
+    color: #fff;
+    text-decoration: none;
+    font: 400 1rem / 1.1 var(--font-display);
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 22px -6px rgb(40 10 10 / 0.45);
+    transition: background 0.3s;
+  }
+
+  .book:hover {
+    background: var(--color-ink);
+  }
+
+  small {
+    padding-left: 10px;
+    border-left: 1px solid rgb(255 255 255 / 0.4);
+    font: 400 0.74rem / 1.1 var(--font-mono);
+    white-space: nowrap;
+    opacity: 0.92;
+  }
+
+  small[hidden] {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .book {
+      display: none;
+    }
+  }
+</style>

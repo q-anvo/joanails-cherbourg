@@ -1,0 +1,9 @@
+---
+import rating from '~/assets/google_rating.json';
+
+const score = rating.rating.toFixed(1).replace('.', ',');
+---
+
+<a class="chip" href={rating.url} target="_blank" rel="noopener">
+  <b>{score}</b><span class="stars" aria-hidden="true">★★★★★</span><span>{rating.reviewCount} avis Google</span>
+</a>

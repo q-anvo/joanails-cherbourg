@@ -1,0 +1,54 @@
+---
+import rating from '~/assets/google_rating.json';
+
+const score = rating.rating.toFixed(1).replace('.', ',');
+---
+
+<section class="page-section reviews">
+  <div class="wrap">
+    <div class="score rise">
+      <span class="big">{score}</span>
+      <div>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5">★★★★★</span>
+        <p>Note moyenne sur {rating.reviewCount} avis Google</p>
+      </div>
+    </div>
+    <a class="text-button" href={rating.url} target="_blank" rel="noopener">Lire les avis</a>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .score {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+
+  .big {
+    font: 400 clamp(5rem, 3.6rem + 7cqi, 9rem) / 0.8 var(--font-display);
+  }
+
+  .stars {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+  }
+
+  p {
+    margin: 6px 0 0;
+    font-size: var(--step--1);
+    color: var(--color-ink-soft);
+  }
+</style>

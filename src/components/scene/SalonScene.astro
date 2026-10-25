@@ -1,0 +1,197 @@
+---
+import { getImage } from 'astro:assets';
+
+import salonDrawing from '~/assets/images/salon-bg.png';
+import { DRAUGHT_CLIPS, DRAWING } from '~/data/scene';
+
+import SceneLights from './SceneLights.astro';
+import SceneZones from './SceneZones.astro';
+import ShopSign from './ShopSign.astro';
+
+const drawing = await getImage({ src: salonDrawing, format: 'webp', width: DRAWING.width, quality: 82 });
+---
+
+<div class="scene" id="scene">
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
+    <filter id="draught" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="3" result="noise">
+        <animate
+          attributeName="baseFrequency"
+          dur="9s"
+          values="0.012 0.03;0.016 0.036;0.012 0.03"
+          repeatCount="indefinite"></animate>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"
+      ></feDisplacementMap>
+    </filter>
+  </svg>
+
+  <div class="cam" id="scene-camera">
+    <div class="art" id="scene-art">
+      <img
+        src={drawing.src}
+        width={DRAWING.width}
+        height={DRAWING.height}
+        alt="Le salon Joanails dessiné : table de manucure, lampes d’architecte, papier peint fleuri et fauteuil sur estrade"
+        fetchpriority="high"
+      />
+      {
+        DRAUGHT_CLIPS.map((clip) => (
+          <div class="sway" style={`--clip: ${clip}`} aria-hidden="true">
+            <img src={drawing.src} alt="" />
+          </div>
+        ))
+      }
+      <SceneLights />
+      <canvas id="scene-dust" aria-hidden="true"></canvas>
+      <div class="warm" aria-hidden="true"></div>
+      <SceneZones drawingSrc={drawing.src} />
+      <div class="grain" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <ShopSign />
+</div>
+
+<script>
+  import '~/scripts/scene-motion';
+</script>
+
+<style>
+  .scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: var(--color-night);
+    container-type: size;
+  }
+
+  .cam {
+    position: absolute;
+    inset: 0;
+    transform: translate3d(var(--px, 0), var(--py, 0), 0);
+    transition: transform 1.4s var(--ease-salon);
+  }
+
+  .art {
+    position: absolute;
+    top: 0;
+    left: calc((100cqw - max(100cqw, 75cqh)) * 0.45);
+    width: max(100cqw, 75cqh);
+    height: max(100cqh, 133.34cqw);
+    transform-origin: 40% 50%;
+    animation: breathe 26s ease-in-out infinite alternate;
+  }
+
+  .art > img,
+  .sway {
+    animation: lights-on 2.4s var(--ease-salon) both;
+  }
+
+  .art > img,
+  .sway img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sway {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    clip-path: inset(var(--clip));
+    filter: url(#draught);
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 90% at 45% 45%, transparent 55%, rgb(26 14 18 / 0.6)), rgb(240 200 130 / 0.05);
+  }
+
+  .warm {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 0.6s;
+    background: radial-gradient(30% 22% at var(--wx, 50%) var(--wy, 50%), rgb(255 220 160 / 0.9), transparent 70%);
+  }
+
+  .scene:hover .warm {
+    opacity: 0.9;
+  }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  @keyframes breathe {
+    from {
+      scale: 1.04;
+    }
+    to {
+      scale: 1.1;
+      translate: -1% -0.6%;
+    }
+  }
+
+  @keyframes lights-on {
+    from {
+      filter: brightness(0.35) saturate(0.6);
+    }
+  }
+
+  @media (max-width: 1023.98px) {
+    .scene::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 2;
+      height: calc(var(--band) + 36px);
+      background: linear-gradient(var(--color-night) 78%, transparent);
+      pointer-events: none;
+    }
+
+    .cam {
+      top: var(--band);
+    }
+
+    .art {
+      left: 0;
+      width: 100cqw;
+      height: 133.34cqw;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .scene {
+      right: auto;
+      width: var(--split);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sway {
+      filter: none;
+    }
+  }
+</style>

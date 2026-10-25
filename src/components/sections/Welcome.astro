@@ -1,0 +1,100 @@
+---
+import RatingChip from '~/components/ui/RatingChip.astro';
+import { SALON } from '~/data/salon';
+---
+
+<header class="welcome" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Prothésiste ongulaire · Cherbourg-en-Cotentin</p>
+    <h1 class="display">Des ongles qui <em>vous</em> ressemblent.</h1>
+    <p class="lede">
+      Gel, semi-permanent, chrome, baby color, strass. Un salon intime au {SALON.address.street}, où chaque pose se
+      dessine avec vous, à votre rythme.
+    </p>
+    <div class="actions">
+      <a class="text-button solid" href={SALON.fresha.url} target="_blank" rel="noopener">Réserver sur Fresha</a>
+      <a class="text-button" href="#tarifs">Voir les tarifs</a>
+    </div>
+    <div class="facts">
+      <span class="chip" data-status data-open="false">
+        <span class="dot"></span><span data-status-text>Horaires</span>
+      </span>
+      <RatingChip />
+    </div>
+  </div>
+</header>
+
+<style>
+  .welcome {
+    padding-block: clamp(56px, 9cqi, 108px) clamp(40px, 6cqi, 72px);
+  }
+
+  .wrap {
+    display: grid;
+    gap: 26px;
+  }
+
+  h1 {
+    max-width: 13ch;
+    font-size: clamp(2.7rem, 1.4rem + 5.4cqi, 5.6rem);
+    line-height: 0.98;
+  }
+
+  .lede {
+    max-width: 48ch;
+    margin: 0;
+    color: var(--color-ink-soft);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .facts :global(.chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 15px;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    background: var(--color-ground-2);
+    font-size: var(--step--1);
+    text-decoration: none;
+  }
+
+  .facts :global(.chip b) {
+    font: 400 1.25rem / 1 var(--font-display);
+  }
+
+  .dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-ink-soft);
+  }
+
+  [data-open='true'] .dot {
+    background: #3fa46a;
+    animation: ping 2s infinite;
+  }
+
+  @keyframes ping {
+    0% {
+      box-shadow: 0 0 0 0 rgb(63 164 106 / 0.6);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 10px transparent;
+    }
+  }
+</style>

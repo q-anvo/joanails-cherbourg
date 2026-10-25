@@ -1,0 +1,53 @@
+---
+import ContactList from '~/components/salon/ContactList.astro';
+import DoorSign from '~/components/salon/DoorSign.astro';
+import HoursTable from '~/components/salon/HoursTable.astro';
+import SalonMap from '~/components/salon/SalonMap.astro';
+import SectionHead from '~/components/ui/SectionHead.astro';
+---
+
+<section class="page-section" id="salon">
+  <div class="wrap">
+    <SectionHead eyebrow="Le salon">
+      <Fragment slot="title">La porte est <em>juste là</em>.</Fragment>
+    </SectionHead>
+    <div class="info">
+      <div class="door">
+        <DoorSign />
+        <SalonMap />
+      </div>
+      <div class="details">
+        <HoursTable />
+        <ContactList />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '~/scripts/opening-status';
+</script>
+
+<style>
+  .info {
+    display: grid;
+    align-items: start;
+    gap: clamp(36px, 6cqi, 64px);
+  }
+
+  .door {
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+  }
+
+  .details {
+    min-width: 0;
+  }
+
+  @container (min-width: 760px) {
+    .info {
+      grid-template-columns: 260px 1fr;
+    }
+  }
+</style>

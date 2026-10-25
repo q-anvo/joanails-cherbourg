@@ -1,132 +1,79 @@
 ---
+import SalonScene from '~/components/scene/SalonScene.astro';
+import BeforeYouCome from '~/components/sections/BeforeYouCome.astro';
+import Gallery from '~/components/sections/Gallery.astro';
+import Reviews from '~/components/sections/Reviews.astro';
+import Salon from '~/components/sections/Salon.astro';
+import Services from '~/components/sections/Services.astro';
+import SiteFooter from '~/components/sections/SiteFooter.astro';
+import Welcome from '~/components/sections/Welcome.astro';
+import BookButton from '~/components/ui/BookButton.astro';
 import Layout from '~/layouts/Layout.astro';
-import SalonScene from '~/components/salon/SalonScene.astro';
 
 const metadata = {
   title: 'Joanails - Salon de manucure à Cherbourg | Onglerie, Gel & Nail Art',
   description:
-    'Joanails, salon de manucure à Cherbourg-en-Cotentin : pose de gel, vernis semi-permanent, nail art, soins des mains et pieds. Réservez votre moment beauté !',
+    'Joanails, salon de manucure à Cherbourg-en-Cotentin : pose de gel, vernis semi-permanent, nail art, soins des mains et pieds. Composez votre pose et réservez sur Fresha.',
   useTitleTemplate: false,
 };
 ---
 
-<Layout metadata={metadata}>
-  <div id="intro" class="intro-wrap">
-    <video id="intro-video" autoplay muted playsinline class="intro-video">
-      <source src="/videos/banner.mp4" type="video/mp4" />
-    </video>
-    <div class="intro-overlay" aria-hidden="true"></div>
-    <div class="intro-logo">
-      <img src="/images/logo.png" alt="Joanails" class="intro-logo-img" />
-    </div>
-  </div>
+<Layout metadata={metadata} tone="night">
+  <SalonScene />
+  <BookButton />
 
-  <div id="salon-wrap" class="salon-wrap hidden-initially">
-    <SalonScene />
-  </div>
+  <main>
+    <div class="window" aria-hidden="true"></div>
+    <div class="sheet">
+      <Welcome />
+      <Gallery />
+      <Reviews />
+      <Services />
+      <BeforeYouCome />
+      <Salon />
+      <SiteFooter />
+    </div>
+  </main>
 </Layout>
 
-<script>
-  function initIntro() {
-    const intro = document.getElementById('intro') as HTMLElement | null;
-    const video = document.getElementById('intro-video') as HTMLVideoElement | null;
-    const salonWrap = document.getElementById('salon-wrap') as HTMLElement | null;
-    if (!intro || !video || !salonWrap) return;
-
-    function revealSalon() {
-      if (!intro || !salonWrap) return;
-      intro.classList.add('fade-out');
-      salonWrap.classList.remove('hidden-initially');
-      salonWrap.classList.add('fade-in');
-      setTimeout(() => intro.remove(), 800);
-    }
-
-    video.playbackRate = 2;
-    const fallback = setTimeout(revealSalon, 2800);
-
-    video.addEventListener('ended', () => {
-      clearTimeout(fallback);
-      revealSalon();
-    });
-
-    video.addEventListener('error', () => {
-      clearTimeout(fallback);
-      revealSalon();
-    });
-  }
-
-  document.addEventListener('astro:page-load', initIntro);
-  initIntro();
-</script>
-
-<style is:global>
-  body {
-    background: #e8d8c4;
-    overflow: hidden;
-    margin: 0;
-  }
-</style>
-
 <style>
-  .intro-wrap {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: #1a0f0a;
-    transition: opacity 0.8s ease;
+  main {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    container-type: inline-size;
   }
-  .intro-wrap.fade-out {
-    opacity: 0;
+
+  main > * {
+    pointer-events: auto;
+  }
+
+  .window {
+    height: min(calc(var(--band) + 133.34vw - 34px), 92svh);
     pointer-events: none;
   }
-  .intro-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+
+  .sheet {
+    overflow: clip;
+    border-radius: 30px 30px 0 0;
+    background: var(--color-ground);
+    box-shadow: 0 -24px 60px rgb(0 0 0 / 0.45);
   }
-  .intro-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(26, 15, 10, 0.35);
-  }
-  .intro-logo {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-  }
-  .intro-logo-img {
-    width: min(260px, 55vw);
-    filter: invert(1) sepia(1) saturate(2) hue-rotate(280deg);
-    animation: logo-breathe 3s ease-in-out infinite;
-  }
-  @keyframes logo-breathe {
-    0%,
-    100% {
-      opacity: 0.85;
-      transform: scale(1);
+
+  @media (min-width: 1024px) {
+    main {
+      min-height: 100vh;
+      margin-left: var(--split);
+      background: var(--color-ground);
     }
-    50% {
-      opacity: 1;
-      transform: scale(1.04);
+
+    .window {
+      display: none;
     }
-  }
-  .salon-wrap {
-    width: 100vw;
-    height: 100vh;
-    height: 100svh;
-    overflow: hidden;
-  }
-  .hidden-initially {
-    opacity: 0;
-    transition: opacity 0.8s ease;
-  }
-  .fade-in {
-    opacity: 1 !important;
+
+    .sheet {
+      border-radius: 0;
+      box-shadow: none;
+    }
   }
 </style>

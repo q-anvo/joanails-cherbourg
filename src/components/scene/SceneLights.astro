@@ -1,0 +1,78 @@
+---
+import { CONES, GLOWS } from '~/data/scene';
+---
+
+{
+  CONES.map(({ x, y, width, height, delay }) => (
+    <span
+      class="cone"
+      style={`--x: ${x}%; --y: ${y}%; --w: ${width}%; --h: ${height}%; --d: ${delay}s`}
+      aria-hidden="true"
+    />
+  ))
+}
+{
+  GLOWS.map(({ x, y, size, delay }) => (
+    <span class="glow" style={`--x: ${x}%; --y: ${y}%; --s: ${size}%; --d: ${delay}s`} aria-hidden="true" />
+  ))
+}
+
+<style>
+  .cone,
+  .glow {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .cone {
+    width: var(--w);
+    height: var(--h);
+    translate: -50% 0;
+    background: radial-gradient(60% 100% at 50% 0%, rgb(255 214 140 / 0.42), transparent 75%);
+    clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+    filter: blur(6px);
+    animation:
+      lamp-on 1s var(--d) var(--ease-salon) both,
+      flicker 7s calc(var(--d) + 1.2s) infinite;
+  }
+
+  .glow {
+    width: var(--s);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--color-lamp), transparent);
+    animation:
+      lamp-on 0.9s var(--d) var(--ease-salon) both,
+      flicker 6s calc(var(--d) + 1s) infinite;
+  }
+
+  @keyframes lamp-on {
+    from {
+      opacity: 0;
+      scale: 0.5;
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    46% {
+      opacity: 0.82;
+    }
+    48% {
+      opacity: 0.95;
+    }
+    50% {
+      opacity: 0.78;
+    }
+    70% {
+      opacity: 0.9;
+    }
+  }
+</style>

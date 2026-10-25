@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import './fonts.css';
-@import './glass.css';
-@import './lofi.css';
+@import './page.css';
 
 @plugin '@tailwindcss/typography';
 
@@ -18,9 +17,12 @@
   --color-paper: #fffaf6;
   --color-lamp: rgb(255 210 125 / 0.5);
   --color-night: #2a1d16;
+  --color-open: #2f7a4b;
+  --color-closed: #9c3a4e;
 
   --font-display: 'Belleza', 'Didot', 'Bodoni 72', Georgia, serif;
   --font-body: 'Belleza', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
   --ease-salon: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -28,10 +30,36 @@
 @layer base {
   :root {
     color-scheme: light;
+    --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.88rem);
+    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+    --step-2: clamp(1.7rem, 1.3rem + 1.4vw, 2.5rem);
+    --step-4: clamp(2.6rem, 1.6rem + 3.6vw, 4.8rem);
+    --split: 42vw;
+    --gutter: clamp(16px, 6cqi, 64px);
+    /* phone and tablet: height of the shop sign above the drawing */
+    --band: calc(env(safe-area-inset-top, 0px) + 168px);
+  }
+
+  body {
+    font: 400 var(--step-0) / 1.6 var(--font-body);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-rose-2);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   ::selection {
     background-color: var(--color-rose-2);
     color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }

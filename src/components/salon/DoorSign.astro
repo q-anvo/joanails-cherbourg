@@ -1,0 +1,59 @@
+<div class="hook" aria-hidden="true"></div>
+<div class="sign" data-status data-open="false">
+  <b data-door-word>Fermé</b><span data-status-text>Horaires</span>
+</div>
+
+<style>
+  .hook {
+    width: 90px;
+    height: 46px;
+    margin-bottom: -26px;
+    border: 2px solid var(--color-caramel);
+    border-bottom: 0;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  }
+
+  .sign {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    width: 100%;
+    max-width: 260px;
+    padding: 26px 20px;
+    border-radius: 18px;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    text-align: center;
+    transform-origin: top center;
+    box-shadow: 0 20px 40px -14px rgb(0 0 0 / 0.6);
+    animation: swing 5s ease-in-out infinite;
+  }
+
+  b {
+    font: 400 clamp(2.4rem, 2rem + 2cqi, 3.2rem) / 1 var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  [data-open='true'] b {
+    color: var(--color-open);
+  }
+
+  [data-open='false'] b {
+    color: var(--color-closed);
+  }
+
+  span {
+    font: 400 0.8rem / 1.4 var(--font-mono);
+  }
+
+  @keyframes swing {
+    0%,
+    100% {
+      rotate: -2deg;
+    }
+    50% {
+      rotate: 2deg;
+    }
+  }
+</style>

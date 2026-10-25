@@ -1,0 +1,70 @@
+---
+import type { ServiceGroup } from '~/lib/menu';
+
+import ServiceRow from './ServiceRow.astro';
+
+export interface Props {
+  group: ServiceGroup;
+  index: number;
+}
+
+const { group, index } = Astro.props;
+---
+
+<div
+  class:list={['group rise', { on: index === 0 }]}
+  id={`group-${index}`}
+  role="tabpanel"
+  aria-labelledby={`tab-${index}`}
+  data-group={index}
+>
+  <h3 class="display"><span class="name">{group.name}</span><small>{group.lead}</small></h3>
+  <ul>
+    {
+      group.services.map((service) => (
+        <li>
+          <ServiceRow service={service} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-ink-soft);
+    font-size: var(--step-2);
+  }
+
+  small {
+    font: 400 var(--step--1) / 1.4 var(--font-body);
+    color: var(--color-ink-soft);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @container (max-width: 759.98px) {
+    .group:not(.on) {
+      display: none;
+    }
+
+    .name {
+      display: none;
+    }
+
+    h3 {
+      padding-bottom: 8px;
+      border-bottom-color: var(--color-line);
+    }
+  }
+</style>

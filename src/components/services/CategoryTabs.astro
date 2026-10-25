@@ -1,0 +1,88 @@
+---
+import type { ServiceGroup } from '~/lib/menu';
+
+export interface Props {
+  groups: ServiceGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="tabs" role="tablist" aria-label="Catégories">
+  {
+    groups.map((group, index) => (
+      <button
+        type="button"
+        role="tab"
+        id={`tab-${index}`}
+        aria-controls={`group-${index}`}
+        aria-selected={index === 0 ? 'true' : 'false'}
+        data-tab={index}
+      >
+        {group.name}
+        <b data-tab-count hidden />
+      </button>
+    ))
+  }
+</div>
+
+<style>
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 2px var(--gutter) 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  button {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 17px;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    background: var(--color-ground-2);
+    color: var(--color-ink);
+    font: 400 1.02rem / 1 var(--font-display);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+
+  button[aria-selected='true'] {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-ground);
+  }
+
+  b {
+    display: grid;
+    place-items: center;
+    min-width: 19px;
+    height: 19px;
+    padding-inline: 5px;
+    border-radius: 999px;
+    background: var(--color-rose-2);
+    color: #fff;
+    font: 500 0.68rem / 1 var(--font-mono);
+  }
+
+  b[hidden] {
+    display: none;
+  }
+
+  @container (min-width: 760px) {
+    .tabs {
+      display: none;
+    }
+  }
+</style>

@@ -1,26 +1,38 @@
 ---
+import { HOURS } from '~/data/hours';
+import { SALON } from '~/data/salon';
 import { SITE } from '~/data/site';
+
+const SCHEMA_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const time = (minutes: number) =>
+  `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'NailSalon',
-  name: SITE.name,
+  name: SALON.name,
+  url: SITE.url,
   image: new URL(SITE.image, SITE.url).href,
   priceRange: '€€',
-  telephone: '+33749394404',
+  telephone: SALON.phone.international,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '73 rue du Val de Saire',
-    addressLocality: 'Cherbourg-en-Cotentin',
-    postalCode: '50100',
-    addressCountry: 'FR',
+    streetAddress: SALON.address.street,
+    addressLocality: SALON.address.city,
+    postalCode: SALON.address.postalCode,
+    addressCountry: SALON.address.country,
   },
-  url: SITE.url,
-  openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-17:00'],
-  sameAs: [
-    'https://www.instagram.com/joanails.cherbourg/',
-    'https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v',
-  ],
+  geo: { '@type': 'GeoCoordinates', ...SALON.geo },
+  hasMap: SALON.maps.place,
+  openingHoursSpecification: HOURS.flatMap((day) =>
+    day.slots.map(([opens, closes]) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: SCHEMA_DAYS[day.weekday],
+      opens: time(opens),
+      closes: time(closes),
+    }))
+  ),
+  sameAs: [SALON.instagram.url, SALON.fresha.url],
 };
 ---
 
