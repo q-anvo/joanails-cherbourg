@@ -33,13 +33,19 @@ function spawn(source: Source, scatter: boolean): Mote {
   };
 }
 
-/** Dust drifting in the lamp light. Paused while the canvas is off screen. */
-export function startDust(canvas: HTMLCanvasElement): void {
+export interface Dust {
+  setAwake(awake: boolean): void;
+}
+
+/** Dust drifting in the lamp light. The frame loop stops entirely while asleep. */
+export function startDust(canvas: HTMLCanvasElement): Dust | undefined {
   const context = canvas.getContext('2d');
-  if (!context) return;
+  if (!context) return undefined;
 
   const motes = Array.from({ length: COUNT }, (_, i) => spawn(SOURCES[i % SOURCES.length], true));
-  let visible = true;
+  let handle = 0;
+  let awake = true;
+  let ready = false;
 
   const resize = () => {
     const box = canvas.getBoundingClientRect();
@@ -48,12 +54,10 @@ export function startDust(canvas: HTMLCanvasElement): void {
     canvas.height = box.height * ratio;
   };
   new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(([entry]) => (visible = entry.isIntersecting)).observe(canvas);
   resize();
 
   const frame = (time: number) => {
-    requestAnimationFrame(frame);
-    if (!visible) return;
+    handle = requestAnimationFrame(frame);
     const { width, height } = canvas;
     const scale = width / 600;
     context.clearRect(0, 0, width, height);
@@ -69,5 +73,23 @@ export function startDust(canvas: HTMLCanvasElement): void {
       context.fill();
     });
   };
-  setTimeout(() => requestAnimationFrame(frame), 1400);
+
+  const sync = () => {
+    if (awake && ready && !handle) handle = requestAnimationFrame(frame);
+    if (!(awake && ready) && handle) {
+      cancelAnimationFrame(handle);
+      handle = 0;
+    }
+  };
+  setTimeout(() => {
+    ready = true;
+    sync();
+  }, 1400);
+
+  return {
+    setAwake(value) {
+      awake = value;
+      sync();
+    },
+  };
 }

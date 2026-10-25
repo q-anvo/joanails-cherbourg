@@ -1,4 +1,5 @@
 import { startDust } from './dust';
+import { watchSceneCover } from './scene-sleep';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scene = document.getElementById('scene');
@@ -17,4 +18,17 @@ if (!reduced && scene && camera && art && matchMedia('(pointer: fine)').matches)
   });
 }
 
-if (!reduced && dust instanceof HTMLCanvasElement) startDust(dust);
+const drifting = !reduced && dust instanceof HTMLCanvasElement ? startDust(dust) : undefined;
+
+/* asleep under the sheet: nothing left to composite over it */
+const opening = document.querySelector('main > .window');
+const draught = document.getElementById('scene-draught');
+if (scene && opening) {
+  watchSceneCover(opening, (asleep) => {
+    scene.toggleAttribute('data-asleep', asleep);
+    drifting?.setAwake(!asleep);
+    if (!(draught instanceof SVGSVGElement)) return;
+    if (asleep) draught.pauseAnimations();
+    else draught.unpauseAnimations();
+  });
+}

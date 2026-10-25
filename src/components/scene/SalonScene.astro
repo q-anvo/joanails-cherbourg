@@ -2,8 +2,9 @@
 import { getImage } from 'astro:assets';
 
 import salonDrawing from '~/assets/images/salon-bg.png';
-import { DRAUGHT_CLIPS, DRAWING } from '~/data/scene';
+import { DRAWING } from '~/data/scene';
 
+import SceneDraught from './SceneDraught.astro';
 import SceneLights from './SceneLights.astro';
 import SceneZones from './SceneZones.astro';
 import ShopSign from './ShopSign.astro';
@@ -12,20 +13,6 @@ const drawing = await getImage({ src: salonDrawing, format: 'webp', width: DRAWI
 ---
 
 <div class="scene" id="scene">
-  <svg width="0" height="0" class="absolute" aria-hidden="true">
-    <filter id="draught" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="3" result="noise">
-        <animate
-          attributeName="baseFrequency"
-          dur="9s"
-          values="0.012 0.03;0.016 0.036;0.012 0.03"
-          repeatCount="indefinite"></animate>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"
-      ></feDisplacementMap>
-    </filter>
-  </svg>
-
   <div class="cam" id="scene-camera">
     <div class="art" id="scene-art">
       <img
@@ -35,13 +22,7 @@ const drawing = await getImage({ src: salonDrawing, format: 'webp', width: DRAWI
         alt="Le salon Joanails dessiné : table de manucure, lampes d’architecte, papier peint fleuri et fauteuil sur estrade"
         fetchpriority="high"
       />
-      {
-        DRAUGHT_CLIPS.map((clip) => (
-          <div class="sway" style={`--clip: ${clip}`} aria-hidden="true">
-            <img src={drawing.src} alt="" />
-          </div>
-        ))
-      }
+      <SceneDraught drawingSrc={drawing.src} />
       <SceneLights />
       <canvas id="scene-dust" aria-hidden="true"></canvas>
       <div class="warm" aria-hidden="true"></div>
@@ -84,24 +65,21 @@ const drawing = await getImage({ src: salonDrawing, format: 'webp', width: DRAWI
     animation: breathe 26s ease-in-out infinite alternate;
   }
 
-  .art > img,
-  .sway {
-    animation: lights-on 2.4s var(--ease-salon) both;
-  }
-
-  .art > img,
-  .sway img {
+  .art > img {
     display: block;
     width: 100%;
     height: 100%;
+    animation: lights-on 2.4s var(--ease-salon) both;
   }
 
-  .sway {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    clip-path: inset(var(--clip));
-    filter: url(#draught);
+  /* covered by the sheet: in-app browsers composite these animated layers over it */
+  .scene[data-asleep] {
+    visibility: hidden;
+  }
+
+  .scene[data-asleep],
+  .scene[data-asleep] :global(*) {
+    animation-play-state: paused !important;
   }
 
   canvas {
@@ -186,12 +164,6 @@ const drawing = await getImage({ src: salonDrawing, format: 'webp', width: DRAWI
     .scene {
       right: auto;
       width: var(--split);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .sway {
-      filter: none;
     }
   }
 </style>

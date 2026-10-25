@@ -1,0 +1,61 @@
+---
+import { DRAUGHT_CLIPS } from '~/data/scene';
+
+interface Props {
+  drawingSrc: string;
+}
+
+const { drawingSrc } = Astro.props;
+---
+
+<svg width="0" height="0" class="absolute" aria-hidden="true" id="scene-draught">
+  <filter id="draught" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="3" result="noise">
+      <animate
+        attributeName="baseFrequency"
+        dur="9s"
+        values="0.012 0.03;0.016 0.036;0.012 0.03"
+        repeatCount="indefinite"></animate>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"
+    ></feDisplacementMap>
+  </filter>
+</svg>
+
+{
+  DRAUGHT_CLIPS.map((clip) => (
+    <div class="sway" style={`--clip: ${clip}`} aria-hidden="true">
+      <img src={drawingSrc} alt="" />
+    </div>
+  ))
+}
+
+<style>
+  .sway {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    clip-path: inset(var(--clip));
+    filter: url(#draught);
+    animation: lights-on 2.4s var(--ease-salon) backwards;
+  }
+
+  .sway img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes lights-on {
+    from {
+      filter: brightness(0.35) saturate(0.6);
+    }
+  }
+
+  /* a turbulence recomputed every frame: too heavy for phones and in-app browsers */
+  @media (max-width: 1023.98px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .sway {
+      filter: none;
+    }
+  }
+</style>
