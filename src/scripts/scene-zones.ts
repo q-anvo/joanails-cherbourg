@@ -3,6 +3,17 @@ const TOUR_STEP = 2400;
 const TAG_PADDING = 30;
 
 const zones = [...document.querySelectorAll<SVGAElement>('.zone')];
+const layer = document.querySelector<SVGSVGElement>('svg.zones');
+
+/*
+ * Instagram's in-app browser can leave the tags unpainted after the first paint until the
+ * scene is hidden and shown again, so the layer is hidden for one frame to force a repaint.
+ */
+const repaint = () => {
+  if (!layer) return;
+  layer.style.visibility = 'hidden';
+  requestAnimationFrame(() => requestAnimationFrame(() => layer.style.removeProperty('visibility')));
+};
 
 /* zone tags hug their text once Belleza is in */
 document.fonts.ready.then(() => {
@@ -14,6 +25,11 @@ document.fonts.ready.then(() => {
     rect.setAttribute('width', width.toFixed(1));
     rect.setAttribute('x', (Number(text.getAttribute('x')) - width / 2).toFixed(1));
   }
+  repaint();
+});
+
+layer?.addEventListener('animationend', (event) => {
+  if (event.target === layer) repaint();
 });
 
 /* the zones light up in turn, and the first hover ends the tour */
