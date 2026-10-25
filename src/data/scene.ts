@@ -37,6 +37,8 @@ export interface SceneZone {
   halo: { cx: number; cy: number; rx: number; ry: number };
   /** Centre of the label pill and its width before the font has loaded. */
   tag: { x: number; y: number; width: number };
+  /** Where the tag moves on desktop, when the shop sign covers its place. */
+  desktopTag?: { x: number; y: number };
   hasCalendar?: boolean;
 }
 
@@ -90,6 +92,7 @@ export const ZONES: SceneZone[] = [
     hit: 'M525,435 a55,55 0 1,0 110,0 a55,55 0 1,0 -110,0 Z',
     halo: { cx: 580, cy: 435, rx: 95, ry: 95 },
     tag: { x: 580, y: 362, width: 128 },
+    desktopTag: { x: 470, y: 515 },
   },
 ];
 

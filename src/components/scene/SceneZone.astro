@@ -10,9 +10,10 @@ const { zone, drawingSrc } = Astro.props;
 const { shape, halo, tag } = zone;
 const maskId = `zone-mask-${zone.id}`;
 const external = zone.external ? { target: '_blank', rel: 'noopener' } : {};
+const shift = zone.desktopTag && `--tag-dx: ${zone.desktopTag.x - tag.x}px; --tag-dy: ${zone.desktopTag.y - tag.y}px`;
 ---
 
-<a class="zone" href={zone.href} aria-label={zone.ariaLabel} {...external}>
+<a class="zone" href={zone.href} aria-label={zone.ariaLabel} style={shift} {...external}>
   <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={DRAWING.width} height={DRAWING.height}>
     {
       shape.kind === 'polygon' ? (
@@ -126,6 +127,12 @@ const external = zone.external ? { target: '_blank', rel: 'noopener' } : {};
   @keyframes glint {
     50% {
       opacity: 0.35;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tag {
+      translate: var(--tag-dx, 0) var(--tag-dy, 0);
     }
   }
 
