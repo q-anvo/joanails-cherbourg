@@ -1,0 +1,1 @@
+function o(r){const t=Math.round(r*100)/100;return`${Number.isInteger(t)?t:t.toFixed(2).replace(".",",")}€`}function n(r){const t=r%60;return`${Math.floor(r/60)}h${t?String(t).padStart(2,"0"):""}`}function a(r){if(r<60)return`${r} min`;const t=r%60;return`${Math.floor(r/60)} h${t?` ${String(t).padStart(2,"0")}`:""}`}export{n as c,a as d,o as e};

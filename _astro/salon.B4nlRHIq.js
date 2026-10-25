@@ -1,0 +1,1 @@
+const r="https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v",o={instagram:{url:"https://www.instagram.com/joanails.cherbourg/"},fresha:{url:r,booking:`${r}/booking`}};export{o as S};
