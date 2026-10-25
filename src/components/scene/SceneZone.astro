@@ -141,10 +141,12 @@ const external = zone.external ? { target: '_blank', rel: 'noopener' } : {};
     }
   }
 
+  /* on touch screens the tags read as buttons, so they are the tap targets */
   @media (hover: none) {
     .tag {
       opacity: 1;
       transform: none;
+      pointer-events: all;
     }
   }
 </style>
