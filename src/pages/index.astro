@@ -6,21 +6,13 @@ const metadata = {
   title: 'Joanails - Salon de manucure à Cherbourg | Onglerie, Gel & Nail Art',
   description:
     'Joanails, salon de manucure à Cherbourg-en-Cotentin : pose de gel, vernis semi-permanent, nail art, soins des mains et pieds. Réservez votre moment beauté !',
-  image: '/images/logo.png',
-  canonical: 'https://joanails.fr/',
-  ignoreTitleTemplate: true,
+  useTitleTemplate: false,
 };
 ---
 
 <Layout metadata={metadata}>
   <div id="intro" class="intro-wrap">
-    <video
-      id="intro-video"
-      autoplay
-      muted
-      playsinline
-      class="intro-video"
-    >
+    <video id="intro-video" autoplay muted playsinline class="intro-video">
       <source src="/videos/banner.mp4" type="video/mp4" />
     </video>
     <div class="intro-overlay" aria-hidden="true"></div>
@@ -114,8 +106,15 @@ const metadata = {
     animation: logo-breathe 3s ease-in-out infinite;
   }
   @keyframes logo-breathe {
-    0%, 100% { opacity: 0.85; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.04); }
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
   }
   .salon-wrap {
     width: 100vw;

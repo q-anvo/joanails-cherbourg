@@ -1,6 +1,6 @@
 ---
 title: 'Politique de Confidentialité'
-layout: '~/layouts/MarkdownLayout.astro'
+layout: '~/layouts/LegalLayout.astro'
 ---
 
 _Mise à jour : 19 septembre 2025_
@@ -25,8 +25,9 @@ Aucune donnée nominative (comme le nom, l’adresse e-mail ou le numéro de té
 Le site utilise **Google Search Console**, un outil proposé par Google pour suivre les performances du site dans les résultats de recherche (impressions, clics, position moyenne, etc.).
 
 Cet outil :
-- **ne dépose aucun cookie** sur le navigateur des visiteurs,  
-- **ne collecte pas de données personnelles** des utilisateurs du site,  
+
+- **ne dépose aucun cookie** sur le navigateur des visiteurs,
+- **ne collecte pas de données personnelles** des utilisateurs du site,
 - fournit uniquement des **statistiques agrégées et anonymes** à la propriétaire du site.
 
 Ces informations sont traitées par Google conformément à sa [Politique de confidentialité](https://policies.google.com/privacy).

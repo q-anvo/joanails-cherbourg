@@ -1,27 +1,14 @@
 ---
-import Layout from '~/layouts/LandingLayout.astro';
-
-import Hero2 from '~/components/widgets/Hero2.astro';
-
-const metadata = {
-  title: 'Page non trouvée',
-};
+import Layout from '~/layouts/Layout.astro';
 ---
 
-<Layout metadata={metadata}>
-  <!-- Hero2 Widget ******************* -->
-  <h1
-    class="text-center text-5xl md:text-6xl font-bold"
-  >
-    Error <span class="size-3xl text-secondary">404</span>
-  </h1>
-
-  <Hero2
-    tagline="Oups… Un ongle cassé... <br />"
-    title='On répare ça ! 💅'
-    actions={[
-      { text: 'Revenez à nos ongles parfait', href: '/', icon: 'tabler:square-rounded-arrow-right' },
-    ]}
-    image={{ src: '~/assets/images/logo.png', alt: 'Logo Joa nails Cherbourg' }}
-  />
+<Layout metadata={{ title: 'Page non trouvée', noindex: true }}>
+  <main class="grid min-h-svh place-content-center gap-6 px-4 text-center">
+    <img src="/images/logo.png" alt="Joanails" class="mx-auto w-40" />
+    <h1 class="font-display text-5xl text-rose-2 md:text-6xl">Oups… un ongle cassé.</h1>
+    <p class="text-lg">On répare ça ! 💅</p>
+    <a href="/" class="mx-auto rounded-full bg-rose px-6 py-3 text-paper transition hover:bg-rose-2">
+      Revenir à nos ongles parfaits
+    </a>
+  </main>
 </Layout>

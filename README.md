@@ -5,7 +5,6 @@ Le site présente les prestations, tarifs et photos du salon, ainsi qu’un moye
 
 ## 🚀 Stack technique
 
-
 Astro — Framework statique moderne
 
 Tailwind CSS — Design responsive et élégant
@@ -34,7 +33,6 @@ Github Pages — Hébergement rapide et sécurisé
 Ce projet est basé en partie sur [AstroWind](https://github.com/arthelokyo/astrowind), distribué sous la licence MIT par [LICENCE.md](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md).
 
 Les modifications et personnalisations ont été réalisées pour le site **Joa Nails – Cherbourg**.
-
 
 ## 📄 Licence
 

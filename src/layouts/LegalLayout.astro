@@ -1,0 +1,32 @@
+---
+import Layout from '~/layouts/Layout.astro';
+
+export interface Props {
+  frontmatter: {
+    title: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout metadata={{ title: frontmatter.title }}>
+  <main class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-20">
+    <a href="/" class="text-sm tracking-widest text-rose uppercase hover:text-rose-2">← Joanails</a>
+    <h1 class="mt-6 font-display text-4xl text-rose-2 md:text-5xl">{frontmatter.title}</h1>
+    <article class="legal prose prose-lg mt-8 max-w-none prose-headings:font-display">
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal {
+    --tw-prose-body: var(--color-ink);
+    --tw-prose-bold: var(--color-ink);
+    --tw-prose-headings: var(--color-rose);
+    --tw-prose-links: var(--color-rose);
+    --tw-prose-bullets: var(--color-rose-2);
+    --tw-prose-hr: var(--color-line);
+  }
+</style>

@@ -6,36 +6,58 @@ import albiImg from '~/assets/images/albi.png';
 ---
 
 <div class="prestations-wrap">
-
   <div class="prestations-grid">
-    {PRESTATIONS.map((cat) => (
-      <div class="prestation-cat">
-        <h3 class="cat-title">{cat.categorie}</h3>
-        <ul class="prestation-list">
-          {cat.items.map((item) => (
-            <li class="prestation-item">
-              <span class="item-nom">{item.nom}</span>
-              <span class="item-prix">{item.prix}</span>
-              {item.detail && <span class="item-detail">{item.detail}</span>}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
+    {
+      PRESTATIONS.map((cat) => (
+        <div class="prestation-cat">
+          <h3 class="cat-title">{cat.categorie}</h3>
+          <ul class="prestation-list">
+            {cat.items.map((item) => (
+              <li class="prestation-item">
+                <span class="item-nom">{item.nom}</span>
+                <span class="item-prix">{item.prix}</span>
+                {item.detail && <span class="item-detail">{item.detail}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
 
   <div class="videos-section">
     <div class="videos-grid">
       <div class="video-item">
-        <video src="/videos/pose_gel.mp4" poster="/images/logo.png" muted loop playsinline class="prestation-video" title="Pose de gel"></video>
+        <video
+          src="/videos/pose_gel.mp4"
+          poster="/images/logo.png"
+          muted
+          loop
+          playsinline
+          class="prestation-video"
+          title="Pose de gel"></video>
         <span class="video-label">Pose de gel</span>
       </div>
       <div class="video-item">
-        <video src="/videos/pose_nail_art.mp4" poster="/images/logo.png" muted loop playsinline class="prestation-video" title="Nail art"></video>
+        <video
+          src="/videos/pose_nail_art.mp4"
+          poster="/images/logo.png"
+          muted
+          loop
+          playsinline
+          class="prestation-video"
+          title="Nail art"></video>
         <span class="video-label">Nail art</span>
       </div>
       <div class="video-item">
-        <video src="/videos/nettoyage_cuticules.mp4" poster="/images/nail-art-cherbourg-3.png" muted loop playsinline class="prestation-video" title="Soin des ongles"></video>
+        <video
+          src="/videos/nettoyage_cuticules.mp4"
+          poster="/images/nail-art-cherbourg-3.png"
+          muted
+          loop
+          playsinline
+          class="prestation-video"
+          title="Soin des ongles"></video>
         <span class="video-label">Soin des ongles</span>
       </div>
     </div>
@@ -49,21 +71,24 @@ import albiImg from '~/assets/images/albi.png';
       <img src={albiImg.src} alt="Albi" class="marque-logo" />
     </div>
   </div>
-
 </div>
 
 <script>
   document.querySelectorAll<HTMLVideoElement>('.prestation-video').forEach((v) => {
-    v.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
+    v.addEventListener('click', () => (v.paused ? v.play() : v.pause()));
     v.play().catch(() => {});
   });
 </script>
 
 <style>
-  .prestations-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
+  .prestations-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 
   .section-title {
-    font-family: var(--aw-font-heading);
+    font-family: var(--font-display);
     color: rgb(140, 95, 60);
     font-size: 1rem;
     margin: 0 0 0.75rem;
@@ -94,7 +119,7 @@ import albiImg from '~/assets/images/albi.png';
     font-weight: 600;
     color: rgb(91, 75, 64);
     text-align: center;
-    font-family: var(--aw-font-heading);
+    font-family: var(--font-display);
   }
 
   .prestations-grid {
@@ -109,7 +134,7 @@ import albiImg from '~/assets/images/albi.png';
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
   .cat-title {
-    font-family: var(--aw-font-heading);
+    font-family: var(--font-display);
     color: rgb(140, 95, 60);
     font-size: 1rem;
     margin: 0 0 0.75rem;
@@ -131,13 +156,25 @@ import albiImg from '~/assets/images/albi.png';
     flex-wrap: wrap;
     gap: 0.25rem;
   }
-  .item-nom { font-size: 0.875rem; color: rgb(91, 75, 64); }
-  .item-prix { font-weight: 600; color: rgb(140, 95, 60); font-size: 0.875rem; }
-  .item-detail { font-size: 0.75rem; color: rgba(91, 75, 64, 0.6); width: 100%; }
+  .item-nom {
+    font-size: 0.875rem;
+    color: rgb(91, 75, 64);
+  }
+  .item-prix {
+    font-weight: 600;
+    color: rgb(140, 95, 60);
+    font-size: 0.875rem;
+  }
+  .item-detail {
+    font-size: 0.75rem;
+    color: rgba(91, 75, 64, 0.6);
+    width: 100%;
+  }
 
-  .marques-section {}
+  .marques-section {
+  }
   .marques-title {
-    font-family: var(--aw-font-heading);
+    font-family: var(--font-display);
     color: rgb(140, 95, 60);
     font-size: 1rem;
     margin: 0 0 0.75rem;

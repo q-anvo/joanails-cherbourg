@@ -1,17 +1,17 @@
 ---
 title: 'Mentions légales'
-layout: '~/layouts/MarkdownLayout.astro'
+layout: '~/layouts/LegalLayout.astro'
 ---
 
 ## Éditeur du site
 
-- **Nom / Raison sociale** : Madame Joséphine Chanoni  
-- **Nom commercial** : JOA NAILS  
-- **Forme juridique** : Affaire personnelle  
+- **Nom / Raison sociale** : Madame Joséphine Chanoni
+- **Nom commercial** : JOA NAILS
+- **Forme juridique** : Affaire personnelle
 - **SIRET** : 945 314 060 00027
-- **Adresse du siège social** : 73 Rue Val de Saire, 50100 Cherbourg-en-Cotentin, France  
-- **Activité principale (APE / NAF)** : 9602B – Soins de beauté  
-- **Téléphone** : 07.49.39.44.04  
+- **Adresse du siège social** : 73 Rue Val de Saire, 50100 Cherbourg-en-Cotentin, France
+- **Activité principale (APE / NAF)** : 9602B – Soins de beauté
+- **Téléphone** : 07.49.39.44.04
 - **Email de contact** : josephine.chanoni@outlook.fr
 - **Numéro de TVA intracommunautaire** : FR43945314060
 
@@ -21,11 +21,11 @@ Directrice de la publication : Madame Joséphine Chanoni.
 
 ## Hébergeur du site
 
-Ce site est hébergé par **GitHub Pages** :  
+Ce site est hébergé par **GitHub Pages** :
 
-- **Société** : GitHub, Inc.  
-- **Adresse** : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis  
-- **Site web** : [https://pages.github.com/](https://pages.github.com/)  
+- **Société** : GitHub, Inc.
+- **Adresse** : 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis
+- **Site web** : [https://pages.github.com/](https://pages.github.com/)
 
 ---
 
@@ -45,10 +45,10 @@ L’éditeur du site ne saurait être tenu responsable de l’utilisation faite 
 
 ## Réalisation du site
 
-Ce site a été conçu et développé par :  
+Ce site a été conçu et développé par :
 
 **Quentin Anvo** — Développeur web freelance  
-SIREN : 941490435 
+SIREN : 941490435
 https://q-anvo.github.io
 
 ---

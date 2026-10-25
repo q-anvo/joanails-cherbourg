@@ -6,19 +6,13 @@ interface Props {
 const { id, title } = Astro.props;
 ---
 
-<div
-  class="modal-overlay"
-  data-modal-id={id}
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby={`modal-title-${id}`}
->
+<div class="modal-overlay" data-modal-id={id} role="dialog" aria-modal="true" aria-labelledby={`modal-title-${id}`}>
   <div class="modal-panel" role="document">
     <div class="modal-header">
       <h2 id={`modal-title-${id}`} class="modal-title">{title}</h2>
       <button class="modal-close-btn" data-modal-close aria-label="Fermer">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </button>
     </div>
@@ -38,7 +32,7 @@ const { id, title } = Astro.props;
     border-bottom: 1px solid rgba(211, 118, 129, 0.25);
   }
   .modal-title {
-    font-family: var(--aw-font-heading);
+    font-family: var(--font-display);
     font-size: 1.5rem;
     color: rgb(211, 118, 129);
     margin: 0;
@@ -62,6 +56,6 @@ const { id, title } = Astro.props;
   }
   .modal-body {
     color: rgb(91, 75, 64);
-    font-family: var(--aw-font-sans);
+    font-family: var(--font-body);
   }
 </style>

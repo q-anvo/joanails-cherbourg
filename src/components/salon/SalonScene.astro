@@ -11,12 +11,16 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 ---
 
 <section class="salon-scene" aria-label="Joanails — Salon de manucure">
-
   <!-- ── Left panel : image + logo + desktop nav ── -->
   <div class="panel-image">
     <div class="scene-bg lofi-grain lofi-vignette">
-      <img src="/images/salon_bg.jpg" alt="Intérieur du salon Joanails"
-        class="scene-img lofi-img" width="1440" height="1920" />
+      <img
+        src="/images/salon_bg.jpg"
+        alt="Intérieur du salon Joanails"
+        class="scene-img lofi-img"
+        width="1440"
+        height="1920"
+      />
       <div class="lofi-warm-overlay" aria-hidden="true"></div>
       <div class="lofi-scanlines" aria-hidden="true"></div>
       <div class="lamp-glow-el" aria-hidden="true"></div>
@@ -31,29 +35,53 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
     <div class="desktop-nav">
       <button class="desktop-nav-btn" data-desktop-btn="salon" aria-label="Salon">
         <div class="desktop-nav-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
         </div>
         <span class="desktop-nav-label">Salon</span>
       </button>
       <button class="desktop-nav-btn" data-desktop-btn="prestations" aria-label="Prestations">
         <div class="desktop-nav-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true">
-            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path>
           </svg>
         </div>
         <span class="desktop-nav-label">Prestations</span>
       </button>
       <button class="desktop-nav-btn" data-desktop-btn="planity" aria-label="Réserver">
         <div class="desktop-nav-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="18" rx="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-            <circle cx="8" cy="15" r="1" fill="currentColor"/>
-            <circle cx="12" cy="15" r="1" fill="currentColor"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <circle cx="8" cy="15" r="1" fill="currentColor"></circle>
+            <circle cx="12" cy="15" r="1" fill="currentColor"></circle>
           </svg>
         </div>
         <span class="desktop-nav-label">Réserver</span>
@@ -61,7 +89,9 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
       <button class="desktop-nav-btn" data-desktop-btn="instagram" aria-label="Instagram">
         <div class="desktop-nav-icon">
           <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            ></path>
           </svg>
         </div>
         <span class="desktop-nav-label">Instagram</span>
@@ -71,14 +101,21 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 
   <!-- ── Right panel : content ── -->
   <div class="panel-content">
-
     <!-- MOBILE : floating pill (salon, prestations, réserver, insta) -->
     <div class="scene-footer">
       <button class="icon-btn" data-modal-target="salon" aria-label="Le salon">
         <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" aria-hidden="true">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
         </div>
         <span class="icon-label">salon</span>
@@ -86,8 +123,16 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 
       <button class="icon-btn" data-modal-target="prestations" aria-label="Prestations">
         <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" aria-hidden="true">
-            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path>
           </svg>
         </div>
         <span class="icon-label">prestations</span>
@@ -95,12 +140,20 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 
       <button class="icon-btn" data-modal-target="planity" aria-label="Réserver">
         <div class="icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="24" height="24" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="18" rx="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-            <circle cx="8" cy="15" r="1" fill="currentColor"/>
-            <circle cx="12" cy="15" r="1" fill="currentColor"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <circle cx="8" cy="15" r="1" fill="currentColor"></circle>
+            <circle cx="12" cy="15" r="1" fill="currentColor"></circle>
           </svg>
         </div>
         <span class="icon-label">réserver</span>
@@ -109,7 +162,9 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
       <button class="icon-btn" data-modal-target="instagram" aria-label="Instagram">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            ></path>
           </svg>
         </div>
         <span class="icon-label">insta</span>
@@ -130,31 +185,41 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
     <!-- DESKTOP : panneau droit (scroll continu) -->
     <div class="dp-wrapper">
       <div class="dp-content" id="dp-scroll">
-
         <!-- ── Welcome ── -->
         <div class="dp-welcome" id="dp-welcome">
           <div class="dp-welcome-inner">
             <p class="dp-welcome-eyebrow">Salon de manucure · Cherbourg</p>
             <h2 class="dp-welcome-title">Bienvenue chez <em>Joanails</em></h2>
-            <p class="dp-welcome-desc">Poses en gel, nail art, soins des ongles — dans un cocon chaleureux à deux pas du centre-ville.</p>
+            <p class="dp-welcome-desc">
+              Poses en gel, nail art, soins des ongles — dans un cocon chaleureux à deux pas du centre-ville.
+            </p>
             <a
               href="https://www.fresha.com/fr/a/joanails-cherbourg-cherbourg-en-cotentin-cherbourg-en-cotentin-73-rue-du-val-de-saire-wk17zc9v"
-              target="_blank" rel="noopener"
+              target="_blank"
+              rel="noopener"
               class="dp-welcome-cta"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-                <circle cx="8" cy="15" r="1" fill="currentColor"/>
-                <circle cx="12" cy="15" r="1" fill="currentColor"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <circle cx="8" cy="15" r="1" fill="currentColor"></circle>
+                <circle cx="12" cy="15" r="1" fill="currentColor"></circle>
               </svg>
               Réserver sur Fresha
             </a>
           </div>
           <div class="dp-welcome-flowers" aria-hidden="true">
             <img src="/images/flower-right.png" alt="" class="dp-welcome-flower dp-welcome-flower-a" />
-            <img src="/images/flower-left.png"  alt="" class="dp-welcome-flower dp-welcome-flower-b" />
+            <img src="/images/flower-left.png" alt="" class="dp-welcome-flower dp-welcome-flower-b" />
           </div>
         </div>
 
@@ -201,14 +266,14 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
           <span class="footer-sep dp-footer-sep">·</span>
           <button class="footer-link dp-footer-link" data-modal-target="privacy">Confidentialité</button>
           <span class="footer-sep dp-footer-sep">·</span>
-          <a class="footer-link dp-footer-link" href="https://q-anvo.github.io/" target="_blank" rel="noopener">Made with love by Q.A</a>
+          <a class="footer-link dp-footer-link" href="https://q-anvo.github.io/" target="_blank" rel="noopener"
+            >Made with love by Q.A</a
+          >
           <span class="footer-sep dp-footer-sep">·</span>
           <span class="footer-copy dp-footer-copy">© Tous droits réservés</span>
         </div>
-
       </div>
     </div>
-
   </div>
 
   <!-- Mobile modals -->
@@ -218,15 +283,14 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
     <ModalContact />
   </SalonModal>
   <SalonModal id="instagram" title="Instagram"><ModalInstagram instanceId="mobile" /></SalonModal>
-  <SalonModal id="salon"     title="Le Salon"><ModalSalon /></SalonModal>
+  <SalonModal id="salon" title="Le Salon"><ModalSalon /></SalonModal>
   <SalonModal id="prestations" title="Prestations & Tarifs">
     <ModalPrestations />
     <hr class="section-divider" />
     <ModalFAQ />
   </SalonModal>
-  <SalonModal id="mentions"  title="Mentions légales"><ModalMentions /></SalonModal>
-  <SalonModal id="privacy"   title="Confidentialité"><ModalPrivacy /></SalonModal>
-
+  <SalonModal id="mentions" title="Mentions légales"><ModalMentions /></SalonModal>
+  <SalonModal id="privacy" title="Confidentialité"><ModalPrivacy /></SalonModal>
 </section>
 
 <script>
@@ -246,7 +310,8 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
       document.head.appendChild(s);
     }
     const grwHide = document.createElement('style');
-    grwHide.textContent = '[class*="grw-net-widget"],[class*="grw-widget-four"]{display:none!important;pointer-events:none!important;visibility:hidden!important}';
+    grwHide.textContent =
+      '[class*="grw-net-widget"],[class*="grw-widget-four"]{display:none!important;pointer-events:none!important;visibility:hidden!important}';
     document.head.appendChild(grwHide);
 
     /* ── Desktop: scroll-based navigation ── */
@@ -264,34 +329,46 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 
       // Activate nav button as sections enter the viewport
       const sections = scrollEl.querySelectorAll<HTMLElement>('.dp-section[id]');
-      const sectionObs = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const sectionId = entry.target.id.replace('dp-', '');
-          document.querySelectorAll<HTMLElement>('.desktop-nav-btn').forEach((btn) => {
-            btn.classList.toggle('active', btn.dataset.desktopBtn === sectionId);
+      const sectionObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const sectionId = entry.target.id.replace('dp-', '');
+            document.querySelectorAll<HTMLElement>('.desktop-nav-btn').forEach((btn) => {
+              btn.classList.toggle('active', btn.dataset.desktopBtn === sectionId);
+            });
           });
-        });
-      }, { root: scrollEl, threshold: 0.3 });
+        },
+        { root: scrollEl, threshold: 0.3 }
+      );
       sections.forEach((s) => sectionObs.observe(s));
 
       // Deactivate all buttons when scrolled back to welcome
       const welcomeEl = document.getElementById('dp-welcome');
       if (welcomeEl) {
-        const welcomeObs = new IntersectionObserver((entries) => {
-          if (entries[0]?.isIntersecting) {
-            document.querySelectorAll<HTMLElement>('.desktop-nav-btn').forEach((b) => b.classList.remove('active'));
-          }
-        }, { root: scrollEl, threshold: 0.4 });
+        const welcomeObs = new IntersectionObserver(
+          (entries) => {
+            if (entries[0]?.isIntersecting) {
+              document.querySelectorAll<HTMLElement>('.desktop-nav-btn').forEach((b) => b.classList.remove('active'));
+            }
+          },
+          { root: scrollEl, threshold: 0.4 }
+        );
         welcomeObs.observe(welcomeEl);
       }
 
       // Lazy-load grwapi when planity section enters view
       const planityEl = document.getElementById('dp-planity');
       if (planityEl) {
-        const grwObs = new IntersectionObserver((entries) => {
-          if (entries.some((e) => e.isIntersecting)) { ensureGrwapi(); grwObs.disconnect(); }
-        }, { root: scrollEl, threshold: 0.1 });
+        const grwObs = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              ensureGrwapi();
+              grwObs.disconnect();
+            }
+          },
+          { root: scrollEl, threshold: 0.1 }
+        );
         grwObs.observe(planityEl);
       }
     }
@@ -326,7 +403,9 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
 
     /* ── Modal backdrop + close button ── */
     document.querySelectorAll<HTMLElement>('.modal-overlay').forEach((overlay) => {
-      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(overlay); });
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal(overlay);
+      });
       overlay.querySelector('[data-modal-close]')?.addEventListener('click', () => closeModal(overlay));
     });
 
@@ -355,156 +434,291 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
   /* ── Scene ── */
   .salon-scene {
     position: relative;
-    width: 100vw; height: 100vh; height: 100svh;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
     overflow: hidden;
   }
 
   /* ── MOBILE: image fullscreen ── */
-  .panel-image { position: absolute; inset: 0; }
+  .panel-image {
+    position: absolute;
+    inset: 0;
+  }
 
-  .scene-bg { position: absolute; inset: 0; background: #1a1008; }
-  .scene-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .scene-bg {
+    position: absolute;
+    inset: 0;
+    background: #1a1008;
+  }
+  .scene-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
 
   .lofi-warm-overlay {
-    position: absolute; inset: 0;
-    background: rgba(240,200,130,.06);
-    pointer-events: none; z-index: 1;
+    position: absolute;
+    inset: 0;
+    background: rgba(240, 200, 130, 0.06);
+    pointer-events: none;
+    z-index: 1;
   }
   .lofi-scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(to bottom,transparent,transparent 3px,rgba(0,0,0,.03) 3px,rgba(0,0,0,.03) 4px);
-    pointer-events: none; z-index: 2;
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.03) 3px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
   }
   .lamp-glow-el {
-    position: absolute; top: 35%; left: 12%;
-    width: 180px; height: 180px; border-radius: 50%;
-    background: radial-gradient(circle,rgba(255,220,120,.3) 0%,transparent 70%);
-    pointer-events: none; z-index: 2;
+    position: absolute;
+    top: 35%;
+    left: 12%;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 220, 120, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
     animation: lamp-glow 4s ease-in-out infinite;
   }
-  .lamp-glow-2 { top: 6%; left: 35%; width: 120px; height: 120px; background: radial-gradient(circle,rgba(255,210,130,.2) 0%,transparent 70%); animation-delay: 2s; }
-  @keyframes lamp-glow { 0%,100%{opacity:.8} 50%{opacity:1} }
+  .lamp-glow-2 {
+    top: 6%;
+    left: 35%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255, 210, 130, 0.2) 0%, transparent 70%);
+    animation-delay: 2s;
+  }
+  @keyframes lamp-glow {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
 
   /* ── Logo + tagline overlay ── */
   .scene-title {
-    position: absolute; top: 22%; left: 50%;
-    transform: translate(-50%,-50%);
-    display: flex; flex-direction: column; align-items: center;
-    gap: 14px; text-align: center; z-index: 3;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    z-index: 3;
     animation: title-appear 1.2s ease both;
-    width: 88%; max-width: 340px;
+    width: 88%;
+    max-width: 340px;
   }
   @keyframes title-appear {
-    from { opacity: 0; transform: translate(-50%, calc(-50% - 14px)); }
-    to   { opacity: 1; transform: translate(-50%,-50%); }
+    from {
+      opacity: 0;
+      transform: translate(-50%, calc(-50% - 14px));
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .title-logo {
-    width: clamp(180px, 62vw, 280px); height: auto;
-    filter:
-      invert(1) sepia(.6) saturate(2) hue-rotate(300deg) brightness(1.5)
-      drop-shadow(0 0 8px rgba(255,200,210,.9))
-      drop-shadow(0 0 18px rgba(220,140,150,.65))
-      drop-shadow(0 2px 4px rgba(30,10,5,.6));
+    width: clamp(180px, 62vw, 280px);
+    height: auto;
+    filter: invert(1) sepia(0.6) saturate(2) hue-rotate(300deg) brightness(1.5)
+      drop-shadow(0 0 8px rgba(255, 200, 210, 0.9)) drop-shadow(0 0 18px rgba(220, 140, 150, 0.65))
+      drop-shadow(0 2px 4px rgba(30, 10, 5, 0.6));
     animation: logo-breathe 4s ease-in-out infinite;
   }
-  @keyframes logo-breathe { 0%,100%{opacity:.92;transform:scale(1)} 50%{opacity:1;transform:scale(1.03)} }
+  @keyframes logo-breathe {
+    0%,
+    100% {
+      opacity: 0.92;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
 
   .title-tagline {
-    font-family: var(--aw-font-sans);
+    font-family: var(--font-body);
     font-size: clamp(1.1rem, 4.5vw, 1.3rem);
-    font-weight: 500; line-height: 1.5;
-    color: rgba(255,245,225,.93);
-    text-shadow: 0 1px 12px rgba(10,5,0,.85), 0 2px 6px rgba(0,0,0,.6);
-    text-align: center; width: 100%; margin: 0;
-    animation: tagline-appear 1.2s ease .25s both;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 245, 225, 0.93);
+    text-shadow:
+      0 1px 12px rgba(10, 5, 0, 0.85),
+      0 2px 6px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    animation: tagline-appear 1.2s ease 0.25s both;
   }
   @keyframes tagline-appear {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Desktop nav hidden on mobile */
-  .desktop-nav { display: none; }
+  .desktop-nav {
+    display: none;
+  }
 
   /* ── MOBILE: content overlay ── */
-  .panel-content { position: absolute; inset: 0; pointer-events: none; }
-  .dp-wrapper { display: none; }
+  .panel-content {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .dp-wrapper {
+    display: none;
+  }
 
   /* ── Mobile pill ── */
   .scene-footer {
     position: absolute;
     bottom: clamp(36px, 7svh, 56px);
-    left: 50%; transform: translateX(-50%);
+    left: 50%;
+    transform: translateX(-50%);
     pointer-events: auto;
-    display: flex; align-items: center;
-    gap: clamp(4px,1.5vw,10px);
-    background: rgba(255,246,232,.72);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255,218,168,.5);
+    display: flex;
+    align-items: center;
+    gap: clamp(4px, 1.5vw, 10px);
+    background: rgba(255, 246, 232, 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 218, 168, 0.5);
     border-radius: 28px;
-    padding: clamp(8px,2vw,12px) clamp(10px,2.5vw,16px);
-    box-shadow: 0 6px 32px rgba(30,10,5,.22), 0 1px 0 rgba(255,255,255,.4) inset;
+    padding: clamp(8px, 2vw, 12px) clamp(10px, 2.5vw, 16px);
+    box-shadow:
+      0 6px 32px rgba(30, 10, 5, 0.22),
+      0 1px 0 rgba(255, 255, 255, 0.4) inset;
     white-space: nowrap;
   }
 
   .icon-btn {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    background: none; border: none; cursor: pointer; padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     -webkit-tap-highlight-color: transparent;
   }
   .icon-wrap {
-    width: clamp(48px,12.5vw,58px); height: clamp(48px,12.5vw,58px);
+    width: clamp(48px, 12.5vw, 58px);
+    height: clamp(48px, 12.5vw, 58px);
     border-radius: 14px;
-    background: rgba(255,250,242,.55);
-    border: 1px solid rgba(255,215,160,.4);
-    display: flex; align-items: center; justify-content: center;
-    color: rgb(140,95,60);
-    transition: background .18s, transform .18s, box-shadow .18s, color .18s;
+    background: rgba(255, 250, 242, 0.55);
+    border: 1px solid rgba(255, 215, 160, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(140, 95, 60);
+    transition:
+      background 0.18s,
+      transform 0.18s,
+      box-shadow 0.18s,
+      color 0.18s;
   }
-  .icon-btn:hover .icon-wrap, .icon-btn:focus-visible .icon-wrap {
-    background: rgba(255,238,218,.92);
+  .icon-btn:hover .icon-wrap,
+  .icon-btn:focus-visible .icon-wrap {
+    background: rgba(255, 238, 218, 0.92);
     transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 6px 18px rgba(140,95,60,.3);
-    color: rgb(91,55,25);
+    box-shadow: 0 6px 18px rgba(140, 95, 60, 0.3);
+    color: rgb(91, 55, 25);
   }
-  .icon-btn:active .icon-wrap { transform: scale(.96); }
-  .icon-btn:focus-visible { outline: none; }
-  .icon-btn:focus-visible .icon-wrap { outline: 2px solid rgb(140,95,60); outline-offset: 2px; }
+  .icon-btn:active .icon-wrap {
+    transform: scale(0.96);
+  }
+  .icon-btn:focus-visible {
+    outline: none;
+  }
+  .icon-btn:focus-visible .icon-wrap {
+    outline: 2px solid rgb(140, 95, 60);
+    outline-offset: 2px;
+  }
 
   .icon-label {
-    font-family: var(--aw-font-heading);
-    font-size: clamp(.55rem,1.8vw,.65rem);
-    font-weight: 700; letter-spacing: .03em;
-    color: rgb(100,60,35); white-space: nowrap; text-transform: lowercase;
+    font-family: var(--font-display);
+    font-size: clamp(0.55rem, 1.8vw, 0.65rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: rgb(100, 60, 35);
+    white-space: nowrap;
+    text-transform: lowercase;
   }
 
   /* ── Mobile site footer ── */
   .site-footer-mobile {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    display: flex; align-items: center; justify-content: center;
-    flex-wrap: wrap; gap: 4px 6px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 6px;
     padding: 5px 12px 6px;
-    background: rgba(20,10,5,.35);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    background: rgba(20, 10, 5, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     pointer-events: auto;
     z-index: 4;
   }
   .footer-link {
-    background: none; border: none; padding: 0;
-    font-size: 0.65rem; font-family: var(--aw-font-sans);
-    color: rgba(255,235,205,.75);
-    cursor: pointer; text-decoration: none;
-    transition: color .15s;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.65rem;
+    font-family: var(--font-body);
+    color: rgba(255, 235, 205, 0.75);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s;
   }
-  .footer-link:hover { color: rgba(255,235,205,1); }
-  .footer-sep { font-size: .6rem; color: rgba(255,235,205,.35); pointer-events: none; }
-  .footer-copy { font-size: .6rem; color: rgba(255,235,205,.45); font-family: var(--aw-font-sans); }
+  .footer-link:hover {
+    color: rgba(255, 235, 205, 1);
+  }
+  .footer-sep {
+    font-size: 0.6rem;
+    color: rgba(255, 235, 205, 0.35);
+    pointer-events: none;
+  }
+  .footer-copy {
+    font-size: 0.6rem;
+    color: rgba(255, 235, 205, 0.45);
+    font-family: var(--font-body);
+  }
 
   /* Section divider (mobile + desktop) */
   .section-divider {
     border: none;
-    border-top: 1px solid rgba(140,95,60,.2);
+    border-top: 1px solid rgba(140, 95, 60, 0.2);
     margin: 1.5rem 0;
   }
 
@@ -512,15 +726,30 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
      DESKTOP (≥ 1024px)
   ───────────────────────────────────────── */
   @media (min-width: 1024px) {
-
-    .salon-scene { display: flex; flex-direction: row; }
+    .salon-scene {
+      display: flex;
+      flex-direction: row;
+    }
 
     /* Left panel */
-    .panel-image { position: relative; width: 42%; flex-shrink: 0; height: 100svh; }
+    .panel-image {
+      position: relative;
+      width: 42%;
+      flex-shrink: 0;
+      height: 100svh;
+    }
 
-    .scene-title { top: 50%; max-width: 78%; gap: 22px; }
-    .title-logo  { width: clamp(190px, 28vw, 330px); }
-    .title-tagline { font-size: clamp(1rem, 1.85vw, 1.35rem); }
+    .scene-title {
+      top: 50%;
+      max-width: 78%;
+      gap: 22px;
+    }
+    .title-logo {
+      width: clamp(190px, 28vw, 330px);
+    }
+    .title-tagline {
+      font-size: clamp(1rem, 1.85vw, 1.35rem);
+    }
 
     /* Desktop 4-button nav */
     .desktop-nav {
@@ -529,127 +758,198 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
       bottom: clamp(24px, 4vh, 48px);
       left: 50%;
       transform: translateX(-50%);
-      gap: clamp(5px, .8vw, 10px);
+      gap: clamp(5px, 0.8vw, 10px);
       z-index: 5;
     }
     .desktop-nav-btn {
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
-      background: rgba(255,246,232,.65);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,218,168,.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 246, 232, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 218, 168, 0.5);
       border-radius: 14px;
-      padding: clamp(8px,1.2vh,12px) clamp(8px,1.2vw,14px);
+      padding: clamp(8px, 1.2vh, 12px) clamp(8px, 1.2vw, 14px);
       cursor: pointer;
-      color: rgb(140,95,60);
-      transition: background .18s, transform .18s, box-shadow .18s, color .18s, border-color .18s;
+      color: rgb(140, 95, 60);
+      transition:
+        background 0.18s,
+        transform 0.18s,
+        box-shadow 0.18s,
+        color 0.18s,
+        border-color 0.18s;
       -webkit-tap-highlight-color: transparent;
       min-width: 58px;
     }
     .desktop-nav-btn:hover {
-      background: rgba(255,238,218,.92);
+      background: rgba(255, 238, 218, 0.92);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(140,95,60,.25);
+      box-shadow: 0 6px 20px rgba(140, 95, 60, 0.25);
     }
     .desktop-nav-btn.active {
-      background: rgb(91,55,25);
-      color: rgb(255,240,220);
-      border-color: rgba(255,180,100,.3);
-      box-shadow: 0 6px 24px rgba(30,10,5,.35);
+      background: rgb(91, 55, 25);
+      color: rgb(255, 240, 220);
+      border-color: rgba(255, 180, 100, 0.3);
+      box-shadow: 0 6px 24px rgba(30, 10, 5, 0.35);
     }
     .desktop-nav-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .desktop-nav-label {
-      font-family: var(--aw-font-heading);
-      font-size: clamp(.55rem, .72vw, .72rem);
-      font-weight: 700; letter-spacing: .03em;
-      white-space: nowrap; text-transform: lowercase;
+      font-family: var(--font-display);
+      font-size: clamp(0.55rem, 0.72vw, 0.72rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      text-transform: lowercase;
     }
 
     /* Right panel */
     .panel-content {
-      position: relative; flex: 1; height: 100svh;
-      display: flex; flex-direction: column;
-      background: linear-gradient(160deg,#fdf4e7 0%,#f5e5cc 45%,#edd8b8 100%);
-      pointer-events: auto; overflow: hidden;
+      position: relative;
+      flex: 1;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(160deg, #fdf4e7 0%, #f5e5cc 45%, #edd8b8 100%);
+      pointer-events: auto;
+      overflow: hidden;
     }
 
-    .scene-footer       { display: none; }
-    .site-footer-mobile { display: none; }
+    .scene-footer {
+      display: none;
+    }
+    .site-footer-mobile {
+      display: none;
+    }
 
     /* Desktop wrapper */
     .dp-wrapper {
-      display: flex; flex-direction: column;
-      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
     }
 
     /* Scrollable content area */
     .dp-content {
-      flex: 1; height: 0;
+      flex: 1;
+      height: 0;
       overflow-y: auto;
       scroll-behavior: smooth;
       scrollbar-width: thin;
-      scrollbar-color: rgba(140,95,60,.3) transparent;
+      scrollbar-color: rgba(140, 95, 60, 0.3) transparent;
     }
-    .dp-content::-webkit-scrollbar { width: 4px; }
-    .dp-content::-webkit-scrollbar-thumb { background: rgba(140,95,60,.3); border-radius: 2px; }
+    .dp-content::-webkit-scrollbar {
+      width: 4px;
+    }
+    .dp-content::-webkit-scrollbar-thumb {
+      background: rgba(140, 95, 60, 0.3);
+      border-radius: 2px;
+    }
 
     /* ── Welcome ── */
     .dp-welcome {
       height: 100svh;
       flex-shrink: 0;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      padding: clamp(3rem,6vh,6rem) clamp(2rem,3vw,3rem) clamp(2rem,4vh,4rem);
-      position: relative; overflow: hidden;
+      padding: clamp(3rem, 6vh, 6rem) clamp(2rem, 3vw, 3rem) clamp(2rem, 4vh, 4rem);
+      position: relative;
+      overflow: hidden;
     }
     .dp-welcome-inner {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       max-width: 520px;
-      display: flex; flex-direction: column; gap: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
     .dp-welcome-eyebrow {
-      font-family: var(--aw-font-sans);
-      font-size: clamp(.68rem, .85vw, .82rem);
-      font-weight: 600; letter-spacing: .14em;
+      font-family: var(--font-body);
+      font-size: clamp(0.68rem, 0.85vw, 0.82rem);
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgb(211,118,129);
+      color: rgb(211, 118, 129);
       margin: 0;
     }
     .dp-welcome-title {
-      font-family: var(--aw-font-heading);
+      font-family: var(--font-display);
       font-size: clamp(2rem, 3.4vw, 3.2rem);
-      font-weight: 800; line-height: 1.1;
-      color: rgb(80,48,28); margin: 0;
+      font-weight: 800;
+      line-height: 1.1;
+      color: rgb(80, 48, 28);
+      margin: 0;
     }
     .dp-welcome-title em {
-      color: rgb(211,118,129); font-style: normal;
+      color: rgb(211, 118, 129);
+      font-style: normal;
     }
     .dp-welcome-desc {
-      font-size: clamp(.88rem, 1.15vw, 1.05rem);
-      line-height: 1.75; color: rgb(100,70,45);
+      font-size: clamp(0.88rem, 1.15vw, 1.05rem);
+      line-height: 1.75;
+      color: rgb(100, 70, 45);
       margin: 0;
     }
     .dp-welcome-cta {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       align-self: flex-start;
-      background: rgb(91,75,64); color: rgb(255,245,225);
-      font-family: var(--aw-font-heading);
-      font-size: .95rem; font-weight: 700;
+      background: rgb(91, 75, 64);
+      color: rgb(255, 245, 225);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
       text-decoration: none;
-      padding: .7rem 1.4rem; border-radius: 14px;
-      transition: background .18s, transform .18s;
+      padding: 0.7rem 1.4rem;
+      border-radius: 14px;
+      transition:
+        background 0.18s,
+        transform 0.18s;
     }
-    .dp-welcome-cta:hover { background: rgb(70,55,45); transform: translateY(-1px); }
+    .dp-welcome-cta:hover {
+      background: rgb(70, 55, 45);
+      transform: translateY(-1px);
+    }
     .dp-welcome-flowers {
-      position: absolute; bottom: 0; right: 0;
-      display: flex; flex-direction: row; align-items: flex-end;
-      width: clamp(160px,20vw,260px); pointer-events: none; z-index: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      width: clamp(160px, 20vw, 260px);
+      pointer-events: none;
+      z-index: 0;
     }
-    .dp-welcome-flower { width: 60%; display: block; flex-shrink: 0; }
-    .dp-welcome-flower-a { transform: rotate(-8deg); transform-origin: bottom center; opacity: .5; z-index: 1; }
-    .dp-welcome-flower-b { transform: rotate(8deg) scaleX(-1); transform-origin: bottom center; opacity: .45; margin-left: -32%; }
+    .dp-welcome-flower {
+      width: 60%;
+      display: block;
+      flex-shrink: 0;
+    }
+    .dp-welcome-flower-a {
+      transform: rotate(-8deg);
+      transform-origin: bottom center;
+      opacity: 0.5;
+      z-index: 1;
+    }
+    .dp-welcome-flower-b {
+      transform: rotate(8deg) scaleX(-1);
+      transform-origin: bottom center;
+      opacity: 0.45;
+      margin-left: -32%;
+    }
 
     /* ── Spacers (fond transparent, fondu haut/bas) ── */
     .dp-spacer {
@@ -661,31 +961,52 @@ import ModalPrivacy from '../modales/ModalPrivacy.astro';
     }
     .dp-spacer-img {
       position: absolute;
-      left: 0; width: 100%;
-      top: -8%; height: 116%;
-      object-fit: cover; object-position: center;
+      left: 0;
+      width: 100%;
+      top: -8%;
+      height: 116%;
+      object-fit: cover;
+      object-position: center;
       display: block;
       mix-blend-mode: multiply;
       mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
     }
-    .dp-spacer-overlay { display: none; }
+    .dp-spacer-overlay {
+      display: none;
+    }
 
     /* ── Content sections ── */
     .dp-section {
-      padding: clamp(2.5rem,5vh,4rem) clamp(2rem,3vw,3rem);
+      padding: clamp(2.5rem, 5vh, 4rem) clamp(2rem, 3vw, 3rem);
     }
 
     /* ── Desktop footer (end of scroll) ── */
     .dp-footer {
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px 8px;
       padding: 8px 1.5rem 12px;
-      border-top: 1px solid rgba(140,95,60,.1);
+      border-top: 1px solid rgba(140, 95, 60, 0.1);
     }
-    .dp-footer-link { font-size: .72rem; color: rgba(91,75,64,.55); }
-    .dp-footer-link:hover { color: rgb(140,95,60); }
-    .dp-footer-sep { font-size: .65rem; color: rgba(91,75,64,.25); pointer-events: none; }
-    .dp-footer-copy { font-size: .65rem; color: rgba(91,75,64,.35); font-family: var(--aw-font-sans); }
+    .dp-footer-link {
+      font-size: 0.72rem;
+      color: rgba(91, 75, 64, 0.55);
+    }
+    .dp-footer-link:hover {
+      color: rgb(140, 95, 60);
+    }
+    .dp-footer-sep {
+      font-size: 0.65rem;
+      color: rgba(91, 75, 64, 0.25);
+      pointer-events: none;
+    }
+    .dp-footer-copy {
+      font-size: 0.65rem;
+      color: rgba(91, 75, 64, 0.35);
+      font-family: var(--font-body);
+    }
   }
 </style>
