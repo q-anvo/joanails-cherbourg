@@ -1,26 +1,29 @@
 ---
-import type { ServiceGroup } from '~/lib/menu';
-
 export interface Props {
-  groups: ServiceGroup[];
+  /** Each tab names the id of the panel it shows; the first one starts selected. */
+  tabs: { panel: string; label: string }[];
+  label: string;
+  /** A badge per tab, filled by showTabCounts(). */
+  counts?: boolean;
+  /** Hook for the parent's styles and scripts. */
+  name: string;
 }
 
-const { groups } = Astro.props;
+const { tabs, label, counts = false, name } = Astro.props;
 ---
 
-<div class="tabs" role="tablist" aria-label="Catégories">
+<div class="tabs" role="tablist" aria-label={label} data-tabs={name}>
   {
-    groups.map((group, index) => (
+    tabs.map(({ panel, label }, index) => (
       <button
         type="button"
         role="tab"
-        id={`tab-${index}`}
-        aria-controls={`group-${index}`}
+        id={`tab-${panel}`}
+        aria-controls={panel}
         aria-selected={index === 0 ? 'true' : 'false'}
-        data-tab={index}
       >
-        {group.name}
-        <b data-tab-count hidden />
+        {label}
+        {counts && <b data-tab-count hidden />}
       </button>
     ))
   }
@@ -78,11 +81,5 @@ const { groups } = Astro.props;
 
   b[hidden] {
     display: none;
-  }
-
-  @container (min-width: 760px) {
-    .tabs {
-      display: none;
-    }
   }
 </style>

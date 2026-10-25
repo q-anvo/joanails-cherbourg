@@ -1,9 +1,11 @@
 ---
-import CategoryTabs from '~/components/services/CategoryTabs.astro';
 import ServiceGroup from '~/components/services/ServiceGroup.astro';
 import Ticket from '~/components/services/Ticket.astro';
+import PillTabs from '~/components/ui/PillTabs.astro';
 import SectionHead from '~/components/ui/SectionHead.astro';
 import { MENU } from '~/data/menu';
+
+const tabs = MENU.map((group, index) => ({ panel: `group-${index}`, label: group.name }));
 ---
 
 <section class="page-section" id="tarifs">
@@ -15,7 +17,7 @@ import { MENU } from '~/data/menu';
     </SectionHead>
     <div class="menu">
       <div class="groups">
-        <CategoryTabs groups={MENU} />
+        <PillTabs tabs={tabs} label="Catégories" name="menu" counts />
         {MENU.map((group, index) => <ServiceGroup group={group} index={index} />)}
       </div>
       <Ticket />
@@ -43,6 +45,11 @@ import { MENU } from '~/data/menu';
   @container (min-width: 760px) {
     .menu {
       grid-template-columns: 1fr 300px;
+    }
+
+    /* wide screens show every category at once */
+    .groups :global([data-tabs]) {
+      display: none;
     }
   }
 

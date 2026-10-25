@@ -15,8 +15,7 @@ const { group, index } = Astro.props;
   class:list={['group rise', { on: index === 0 }]}
   id={`group-${index}`}
   role="tabpanel"
-  aria-labelledby={`tab-${index}`}
-  data-group={index}
+  aria-labelledby={`tab-group-${index}`}
 >
   <h3 class="display"><span class="name">{group.name}</span><small>{group.lead}</small></h3>
   <ul>

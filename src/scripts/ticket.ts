@@ -6,7 +6,7 @@ import type { Service } from '~/lib/menu';
 import { summarize } from '~/lib/ticket';
 
 import { createTicketLines, rollTotal } from './ticket-view';
-import { selectTab, showTabCounts } from './category-tabs';
+import { showTabCounts, wireTabs } from './tabs';
 
 const services = MENU.flatMap((group, groupIndex) => group.services.map((service) => ({ service, groupIndex })));
 const rows = new Map<number, HTMLButtonElement>();
@@ -23,6 +23,8 @@ const length = document.querySelector('[data-ticket-length]');
 const handoff = document.querySelector<HTMLElement>('[data-ticket-handoff]');
 const summaries = document.querySelectorAll<HTMLElement>('[data-ticket-summary]');
 
+const categoryTabs = document.querySelector('[data-tabs="menu"]');
+
 const isPicked = (service: Service) => rows.get(service.id)?.getAttribute('aria-pressed') === 'true';
 
 function render() {
@@ -34,7 +36,12 @@ function render() {
   if (total) rollTotal(total, summary.total, summary.startingPrice);
   if (length) length.textContent = summary.minutes ? `≈ ${duration(summary.minutes)}` : '–';
 
-  showTabCounts(MENU.map((_, index) => picked.filter((entry) => entry.groupIndex === index).length));
+  if (categoryTabs) {
+    showTabCounts(
+      categoryTabs,
+      MENU.map((_, index) => picked.filter((entry) => entry.groupIndex === index).length)
+    );
+  }
 
   const href = bookingUrl(
     SALON.fresha.booking,
@@ -62,9 +69,7 @@ rows.forEach((row) =>
   })
 );
 
-document
-  .querySelectorAll<HTMLButtonElement>('[data-tab]')
-  .forEach((tab) => tab.addEventListener('click', () => selectTab(Number(tab.dataset.tab))));
+if (categoryTabs) wireTabs(categoryTabs);
 
 document.querySelectorAll<HTMLButtonElement>('[data-copy-phone]').forEach((button) =>
   button.addEventListener('click', async () => {
