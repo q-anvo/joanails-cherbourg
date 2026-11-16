@@ -34,11 +34,12 @@ Ces informations sont traitées par Google conformément à sa [Politique de con
 
 ---
 
-## Cookies
+## Cookies et contenus tiers
 
-Le site **ne dépose aucun cookie de suivi ni de publicité**.  
-Seuls des **cookies techniques essentiels** peuvent être utilisés pour assurer le bon fonctionnement du site (par exemple, pour mémoriser l’affichage du bandeau d’informations légales).  
-Ces cookies ne permettent pas d’identifier les visiteurs et ne nécessitent pas de consentement préalable.
+Le site ne dépose lui-même aucun cookie et n’utilise aucun outil de mesure d’audience ni de publicité.
+
+La section « Le salon » intègre une **carte Google Maps**. Dès l’affichage de la page, Google peut déposer des cookies et collecter des données techniques (adresse IP, informations sur votre navigateur) pour faire fonctionner la carte. **JOA NAILS** n’a aucun accès à ces données.  
+Pour en savoir plus ou gérer ces cookies, consultez la [Politique de confidentialité de Google](https://policies.google.com/privacy).
 
 ---
 
